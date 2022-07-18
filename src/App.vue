@@ -5,7 +5,7 @@
 useHead({
   title: '若叶岂知秋',
   meta: [
-    { name: 'description', content: 'Opinionated Vite Starter Template' },
+    { name: 'description', content: '试验阶段，输入org-repl 进入实时转换页面!' },
     {
       name: 'theme-color',
       content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
