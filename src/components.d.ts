@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     HeaderNode: typeof import('./components/org/HeaderNode.vue')['default']
     OrgEmphasisNode: typeof import('./components/org/OrgEmphasisNode.vue')['default']
     OrgHeaderNode: typeof import('./components/org/OrgHeaderNode.vue')['default']
+    OrgSubSupNode: typeof import('./components/org/OrgSubSupNode.vue')['default']
     OrgTextNode: typeof import('./components/org/OrgTextNode.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

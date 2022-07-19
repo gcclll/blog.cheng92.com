@@ -19,4 +19,5 @@ export const enum NodeTypes {
   INNER_LINK, // <<meta_id>>
 
   STATE, // TODO, DONE, etc.
+  SUBSUP,
 }

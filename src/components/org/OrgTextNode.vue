@@ -17,8 +17,17 @@ const props = withDefaults(
 
 <template>
   <div>
-    <div v-if="type === NodeTypes.HEADER">1. {{ type }}: {{ data }}</div>
-    <div v-else>2. {{ type }}: {{ data }}</div>
+    <span v-for="(child, i) in data.children" :key="i">
+      <span v-if="child.type === NodeTypes.TEXT">{{ child.content }}</span>
+      <OrgEmphasisNode
+        v-else-if="child.type === NodeTypes.EMPHASIS"
+        :data="child"
+      />
+      <OrgSubSupNode
+        v-else-if="child.type === NodeTypes.SUBSUP"
+        :data="child"
+      />
+    </span>
   </div>
 </template>
 

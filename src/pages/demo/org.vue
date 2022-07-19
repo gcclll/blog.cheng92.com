@@ -6,7 +6,9 @@ const nodes = ref([])
 watch(source, (value: string) => {
   nodes.value = baseParse(value)
   console.log(nodes.value, 111)
-})
+}, {
+   immediate: true
+ })
 </script>
 
 <template>
