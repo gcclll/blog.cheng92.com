@@ -3,24 +3,23 @@ import { NodeTypes } from '~/types'
 
 withDefaults(
   defineProps<{
-    data: {
+    nodes: Array<{
       type: NodeTypes
       [propName]: any
-    }
+    }>
   }>(),
   {
-    data: {
-      type: NodeTypes.HEADER, // default
-      children: [],
-    },
+    nodes: [],
   }
 )
 </script>
 
 <template>
   <div class="org-content">
-    <OrgHeaderNode v-if="data.type === NodeTypes.HEADER" :data="data" />
-    <OrgTextNode v-else-if="data.type === NodeTypes.TEXT" :data="data" />
+    <div v-for="(node, i) in nodes" class="org-content-item" :key="i">
+      <OrgHeaderNode v-if="node.type === NodeTypes.HEADER" :data="node" />
+      <OrgTextNode v-else-if="node.type === NodeTypes.TEXT" :data="node" />
+    </div>
   </div>
 </template>
 

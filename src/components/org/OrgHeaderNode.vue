@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
   <!-- header content is a TextNode -->
   <component :is="tag">
-    <OrgTextNode :data="data.content" :type="data.type" />
+    <OrgTextNode :data="data.content" />
   </component>
 </template>
 

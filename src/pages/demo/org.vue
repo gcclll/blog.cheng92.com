@@ -1,6 +1,6 @@
 <script lang="ts" setup>
- import { baseParse } from 'org-file-parser-with-js'
- const source = ref(`* header1
+import { baseParse } from 'org-file-parser-with-js'
+const source = ref(`* header1
 
 * empasis text
 
@@ -17,14 +17,17 @@
 &!text&! &@text&@ &%text&% &&text&&
 
 `)
- const nodes = ref([])
+const nodes = ref([])
 
- watch(source, (value: string) => {
-   nodes.value = baseParse(value)
-   console.log(nodes.value, 111)
- }, {
-   immediate: true
- })
+watch(
+  source,
+  (value: string) => {
+    nodes.value = baseParse(value)
+  },
+  {
+    immediate: true,
+  }
+)
 </script>
 
 <template>
@@ -36,7 +39,7 @@
         class="w-full p-2 rounded bg-yellow-50 text-left align-text-top"
       />
       <div class="w-full p-2 rounded bg-teal-300 text-left">
-        <OrgContentNode v-for="(node, i) in nodes"  :key="i" :data="node" />
+        <OrgContentNode :nodes="nodes" />
       </div>
     </div>
   </div>
