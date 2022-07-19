@@ -1,0 +1,5 @@
+{
+  "h1": "inline-block font-extrabold tracking-tight text-2xl sm:text-3xl text-slate-900 dark:text-slate-200",
+  "h2": "group flex whitespace-pre-wrap -ml-4 pl-4 mb-2 text-sm leading-6 text-sky-500 font-semibold tracking-normal dark:text-sky-400",
+  "h3": "group flex whitespace-pre-wrap -ml-4 pl-4"
+}

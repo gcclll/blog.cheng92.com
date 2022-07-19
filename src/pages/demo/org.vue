@@ -1,33 +1,25 @@
 <script lang="ts" setup>
-import { baseParse } from 'org-file-parser-with-js'
-const source = ref(`* header1
+ import { baseParse } from 'org-file-parser-with-js'
+ import axios from 'axios'
 
-* empasis text
+ const source = ref(``)
+ axios.get('/orgs/test.org').then(res => {
+   source.value = res.data
+ })
 
-*bold*, /italic/, +line through+, _underline_
+ const nodes = ref([])
 
-* special emphasis text
-
-!!text!! !@text!@ !%text!% !&text!&
-
-@!text@! @@text@@ @%text@% @&text@&
-
-%!text%! %@text%@ %%text%% %&text%&
-
-&!text&! &@text&@ &%text&% &&text&&
-
-`)
-const nodes = ref([])
-
-watch(
-  source,
-  (value: string) => {
-    nodes.value = baseParse(value)
-  },
-  {
-    immediate: true,
-  }
-)
+ watch(
+   source,
+   (value: string) => {
+     nodes.value = baseParse(value)
+     console.log(nodes.value)
+   },
+   {
+     immediate: true,
+   }
+ )
+ 
 </script>
 
 <template>
