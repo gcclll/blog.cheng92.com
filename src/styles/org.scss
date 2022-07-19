@@ -1,0 +1,40 @@
+@mixin org-emphasis-node(
+  $no,
+  $font,
+  $color,
+  $bgcolor,
+  $decoration: none,
+  $size: 22pt,
+  $weight: 700
+) {
+  .gl-org-em-#{$no} {
+    font-family: $font;
+    font-stretch: normal;
+    font-size: $size;
+    font-weight: $weight;
+    font-style: normal;
+    text-decoration: $decoration;
+    color: $color;
+    background: $bgcolor;
+  }
+}
+
+@include org-emphasis-node('01', 'CherryBomb', #a53e2d, #fff8ca, 'underline');
+@include org-emphasis-node('02', 'Eater', #eeb97e, #fff8ca);
+@include org-emphasis-node('03', 'Diplomata', #683231, #fff8ca);
+@include org-emphasis-node('04', 'Linux Biolinum Keyboard O', #353d8b, #fff8ca);
+
+@include org-emphasis-node('05', 'Finger Paint', #54436e, #fff8ca);
+@include org-emphasis-node('06', 'Fuzzy Bubbles', #d65d8f, #fff8ca);
+@include org-emphasis-node('07', 'Gloria Hallelujah', #e5c494, #fff8ca);
+@include org-emphasis-node('08', 'Henny Penny', #0b9fcf, #fff8ca);
+
+@include org-emphasis-node('09', 'Humor Sans', #c9564c, #fff8ca);
+@include org-emphasis-node('10', 'Monaco', #00ce00, #fff8ca);
+@include org-emphasis-node('11', 'Monaco', #00ce00, #fff8ca);
+@include org-emphasis-node('12', 'Monaco', #00ce00, #fff8ca);
+
+@include org-emphasis-node('13', 'Monaco', #00ce00, #fff8ca);
+@include org-emphasis-node('14', 'Monaco', #00ce00, #fff8ca);
+@include org-emphasis-node('15', 'Monaco', #00ce00, #fff8ca);
+@include org-emphasis-node('16', 'Monaco', #00ce00, #fff8ca);

@@ -1,12 +1,28 @@
 <script lang="ts" setup>
-import { baseParse } from 'org-file-parser-with-js'
-const source = ref('* header1')
-const nodes = ref([])
+ import { baseParse } from 'org-file-parser-with-js'
+ const source = ref(`* header1
 
-watch(source, (value: string) => {
-  nodes.value = baseParse(value)
-  console.log(nodes.value, 111)
-}, {
+* empasis text
+
+*bold*, /italic/, +line through+, _underline_
+
+* special emphasis text
+
+!!text!! !@text!@ !%text!% !&text!&
+
+@!text@! @@text@@ @%text@% @&text@&
+
+%!text%! %@text%@ %%text%% %&text%&
+
+&!text&! &@text&@ &%text&% &&text&&
+
+`)
+ const nodes = ref([])
+
+ watch(source, (value: string) => {
+   nodes.value = baseParse(value)
+   console.log(nodes.value, 111)
+ }, {
    immediate: true
  })
 </script>
@@ -20,9 +36,7 @@ watch(source, (value: string) => {
         class="w-full p-2 rounded bg-yellow-50 text-left align-text-top"
       />
       <div class="w-full p-2 rounded bg-teal-300 text-left">
-        <template v-for="(node, i) in nodes">
-          <OrgHeaderNode v-if="node.type === 3" :key="i" :data="node" />
-        </template>
+        <OrgContentNode v-for="(node, i) in nodes"  :key="i" :data="node" />
       </div>
     </div>
   </div>

@@ -3,12 +3,10 @@ import { NodeTypes } from '~/types'
 
 const props = withDefaults(
   defineProps<{
-    type: NodeTypes
     data: OrgTextNode
   }>(),
   {
     data: {
-      type: NodeTypes.TEXT,
       children: [],
     },
   }
