@@ -42,6 +42,6 @@ const classList = computed(() => {
 </template>
 
 <style lang="scss" scoped>
- /* @import url(`@/styles/org.scss`); */
- @import '~/styles/org.scss';
+/* @import url(`@/styles/org.scss`); */
+@import '~/styles/org.scss';
 </style>
