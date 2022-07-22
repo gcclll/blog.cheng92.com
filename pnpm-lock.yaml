@@ -20,7 +20,7 @@ specifiers:
   markdown-it-link-attributes: ^4.0.0
   markdown-it-prism: ^2.2.4
   nprogress: ^0.2.0
-  org-file-parser-with-js: ^0.1.16
+  org-file-parser-with-js: ^0.1.18
   pinia: ^2.0.16
   pnpm: ^7.5.2
   prism-theme-vars: ^0.2.4
@@ -49,7 +49,7 @@ dependencies:
   '@vueuse/head': 0.7.6_vue@3.2.37
   axios: 0.27.2
   nprogress: 0.2.0
-  org-file-parser-with-js: 0.1.16
+  org-file-parser-with-js: 0.1.18
   pinia: 2.0.16_j6bzmzd4ujpabbp5objtwxyjp4
   prism-theme-vars: 0.2.4
   sass: 1.53.0
@@ -1447,8 +1447,8 @@ packages:
       vue-i18n:
         optional: true
     dependencies:
-      '@intlify/message-compiler': 9.2.0-beta.39
-      '@intlify/shared': 9.2.0-beta.39
+      '@intlify/message-compiler': 9.2.0-beta.40
+      '@intlify/shared': 9.2.0-beta.40
       jsonc-eslint-parser: 1.4.1
       source-map: 0.6.1
       vue-i18n: 9.1.10_vue@3.2.37
@@ -1480,11 +1480,11 @@ packages:
       '@intlify/shared': 9.1.10
       source-map: 0.6.1
 
-  /@intlify/message-compiler/9.2.0-beta.39:
-    resolution: {integrity: sha512-wHb3zzk/H3Wfx9U/SaXVenQ/qq2suqJMl/ppu+IdyGGMZxqC57zFqkgwWxEpqP4DzGeisjHe2myjLZQyV1haEQ==}
+  /@intlify/message-compiler/9.2.0-beta.40:
+    resolution: {integrity: sha512-6QWTSYewmkew4nsRqgkwTVuGFKzxVCOK8EXsPt15N+tN1g+OYjC3PfGA2dPB6cVkNxqA9mV/hNK02uHPWU9t0A==}
     engines: {node: '>= 14'}
     dependencies:
-      '@intlify/shared': 9.2.0-beta.39
+      '@intlify/shared': 9.2.0-beta.40
       source-map: 0.6.1
     dev: true
 
@@ -1504,8 +1504,8 @@ packages:
     resolution: {integrity: sha512-Om54xJeo1Vw+K1+wHYyXngE8cAbrxZHpWjYzMR9wCkqbhGtRV5VLhVc214Ze2YatPrWlS2WSMOWXR8JktX/IgA==}
     engines: {node: '>= 10'}
 
-  /@intlify/shared/9.2.0-beta.39:
-    resolution: {integrity: sha512-FqzpkZVk/cTsywWc4mVbI2/fDQwYm8oXVwi7yuassiLps3yJK7P0s6grZaaXIX8gMODNLjJtJPd2KEOSj1lUyw==}
+  /@intlify/shared/9.2.0-beta.40:
+    resolution: {integrity: sha512-xWz+SFjgt/LfaSbbHVn+V7gmvX4ZNP3cIFta790GWZ/tEgwJeC3tkV7i45iUbZ4ZimOerFgKH05b7qvJlKb6RQ==}
     engines: {node: '>= 14'}
     dev: true
 
@@ -1523,7 +1523,7 @@ packages:
         optional: true
     dependencies:
       '@intlify/bundle-utils': 3.1.0_vue-i18n@9.1.10
-      '@intlify/shared': 9.2.0-beta.39
+      '@intlify/shared': 9.2.0-beta.40
       '@rollup/pluginutils': 4.2.1
       debug: 4.3.4
       fast-glob: 3.2.11
@@ -5720,8 +5720,8 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /org-file-parser-with-js/0.1.16:
-    resolution: {integrity: sha512-N5MDRydMR4/zGnnbKGEvuvsoEp3Id3htWFkx8CG+InB6j9gKV1ucZNZeJ6vLhcm3Vj4pC4Y+L+2K75scFFWPaw==}
+  /org-file-parser-with-js/0.1.18:
+    resolution: {integrity: sha512-JJuDpyMpj4Tqc3VXpy1FcYt+1FUAF/WCD5YI1njW9TabDIu3HEcwbgmJB7ALVw08OE0H94V50fCh08S5XtJCVg==}
     engines: {node: '>=10'}
     dev: false
 
