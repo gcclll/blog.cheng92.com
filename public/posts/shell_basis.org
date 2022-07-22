@@ -9,7 +9,6 @@
 #+TITLE: shell basis
 <badge: GCCLL | Homepage | green | / | gnu-emacs | tinder>
 
-
 * =${}= 删除
 :PROPERTIES:
 :COLUMNS:  %CUSTOM_ID[(Custom Id)]
