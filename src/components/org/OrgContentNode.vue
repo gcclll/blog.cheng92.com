@@ -1,5 +1,5 @@
 <script lang="ts" setup>
- import { OrgNodeTypes } from 'org-file-parser-with-js'
+import { OrgNodeTypes } from 'org-file-parser-with-js'
 
 const props = withDefaults(
   defineProps<{
@@ -22,17 +22,15 @@ watch(
   (nodes) => {
     nodeList.value = []
     props.nodes.forEach((node) => {
-      if (node.type === OrgNodeTypes.PROPERTY) {
+      if (node.type === OrgNodeTypes.PROPERTY)
         properties[node.name] = node.value.trim()
-      } else {
-        nodeList.value.push(node)
-      }
+      else nodeList.value.push(node)
     })
   },
   {
     deep: true,
     immediate: true,
-  }
+  },
 )
 </script>
 

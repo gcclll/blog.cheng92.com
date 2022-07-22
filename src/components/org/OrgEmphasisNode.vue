@@ -10,7 +10,7 @@ const props = withDefaults(
       type: OrgNodeTypes.EMPHASIS,
       tag: '',
     },
-  }
+  },
 )
 
 const classList = computed(() => {

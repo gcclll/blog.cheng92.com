@@ -50,6 +50,9 @@ unset(~gset socks-proxy unset~)
 git config --global --unset http.proxy
 git config --global --unset https.proxy
 #+end_src
+* 文章收集
+** 面试
+- [[https://juejin.cn/post/6941278592215515143][「2021」高频前端面试题汇总之前端性能优化篇 - 掘金]]
 * Others
 
 生成网站的 scroll to top 按钮: [[https://www.scrolltotop.com/][Free Scroll to Top Buttons]]。
