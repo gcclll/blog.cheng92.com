@@ -1,18 +1,19 @@
 <script lang="ts" setup>
-import { NodeTypes } from '~/types'
+import { OrgNodeTypes, type OrgSubSupNode } from 'org-file-parser-with-js'
+
 const props = withDefaults(
   defineProps<{
     data: OrgSubSupNode
   }>(),
   {
     data: {
-      type: NodeTypes.SUBSUP,
+      type: OrgNodeTypes.SUBSUP,
       sign: '',
       sub: '',
       sup: '',
       target: '',
     },
-  }
+  },
 )
 </script>
 

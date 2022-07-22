@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NodeTypes } from '~/types'
+import { OrgNodeTypes, type OrgHeaderNode } from 'org-file-parser-with-js'
 import classnames from '~/config/classnames'
 
 const props = withDefaults(
@@ -8,7 +8,7 @@ const props = withDefaults(
   }>(),
   {
     data: {
-      type: NodeTypes.HEADER,
+      type: OrgNodeTypes.HEADER,
       children: [],
       title: '',
       level: 1,

@@ -3,7 +3,7 @@
  import axios from 'axios'
 
  const source = ref(``)
- axios.get('/orgs/test.org').then(res => {
+ axios.get('/posts/test.org').then(res => {
    source.value = res.data
  })
 
@@ -19,7 +19,7 @@
      immediate: true,
    }
  )
- 
+
 </script>
 
 <template>

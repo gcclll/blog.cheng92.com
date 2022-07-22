@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { NodeTypes } from '~/types'
+ import { OrgNodeTypes } from 'org-file-parser-with-js'
 
 const props = withDefaults(
   defineProps<{
     nodes: Array<{
-      type: NodeTypes
+      type: OrgNodeTypes
     }>
   }>(),
   {
     nodes: [] as any,
-  }
+  },
 )
 
 // the properties of the whole chapter
@@ -22,7 +22,7 @@ watch(
   (nodes) => {
     nodeList.value = []
     props.nodes.forEach((node) => {
-      if (node.type === NodeTypes.PROPERTY) {
+      if (node.type === OrgNodeTypes.PROPERTY) {
         properties[node.name] = node.value.trim()
       } else {
         nodeList.value.push(node)
@@ -41,11 +41,11 @@ watch(
     <OrgHeaderNode
       class="text-center"
       style="display: block"
-      :data="{ type: NodeTypes.HEADER, content: properties.title, level: 1 }"
+      :data="{ type: OrgNodeTypes.HEADER, content: properties.title, level: 1 }"
     />
     <div v-for="(node, i) in nodeList" class="org-content-item" :key="i">
-      <OrgHeaderNode v-if="node.type === NodeTypes.HEADER" :data="node" />
-      <OrgTextNode v-else-if="node.type === NodeTypes.TEXT" :data="node" />
+      <OrgHeaderNode v-if="node.type === OrgNodeTypes.HEADER" :data="node" />
+      <OrgTextNode v-else-if="node.type === OrgNodeTypes.TEXT" :data="node" />
     </div>
   </div>
 </template>
