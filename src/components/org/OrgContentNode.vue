@@ -1,22 +1,21 @@
 <script lang="ts" setup>
 import { NodeTypes } from '~/types'
 
-// the properties of the whole chapter
-// TODO set to page property
-const properties = reactive({})
-const nodeList = ref([])
-
 const props = withDefaults(
   defineProps<{
     nodes: Array<{
       type: NodeTypes
-      [propName]: any
     }>
   }>(),
   {
-    nodes: [],
+    nodes: [] as any,
   }
 )
+
+// the properties of the whole chapter
+// TODO set to page property
+const properties = reactive<{ title?: string }>({})
+const nodeList = ref([])
 
 watch(
   () => props.nodes,

@@ -1,0 +1,602 @@
+:PROPERTIES:
+:ID:       8ce7491b-8996-44b3-b8cd-d857cfd32b53
+:END:
+#+SETUPFILE:~/.gclrc/org/hugo_setup.org
+#+HUGO_SLUG: vue_directives
+#+HTML_HEAD: <meta name="category" content="vue"/>
+#+HTML_HEAD: <meta name="tags" content="directives"/>
+#+HTML_HEAD: <meta name="createdAt" content="2022-05-12 08:30:10"/>
+#+PROPERTY: header-args :noweb no-export
+#+TITLE: Vue Directives
+<badge: GCCLL | Homepage | green | / | gnu-emacs | tinder>
+
+#+begin_box
+本文中主要包含了 vue3 中各种指令的使用以及其源码的相关实现(每个示例都会涵盖从 parser ->
+transform -> codegen -> compile -> runtime 整个过程)。
+
+- [ ] v-text
+- [ ] v-html
+- [ ] v-show
+- [ ] v-if, v-else, v-else-if
+- [ ] v-for
+- [ ] v-on
+- [X] v-bind
+- [ ] v-model
+- [ ] v-slot
+- [ ] v-pre
+- [ ] v-once
+- [ ] v-memo
+- [ ] v-cloak
+#+end_box
+#+html:<br>
+
+#+html: <br>
+#+begin_details vue packages :title-color green
+#+name: vue-pkgs
+#+begin_src js -n -r
+const __BROWSER__ = false
+const __DEV__ = false
+const log = (hint, ...msg) => {
+  console.log(`--------- ${hint} ---------`)
+  msg.forEach((m) => {
+    console.log(m)
+  })
+}
+
+const {
+  baseParse,
+  transform,
+  generate,
+  transformOn,
+  transformBind,
+  transformModel,
+  transformElement,
+  transformOnce,
+  transformIf,
+  transformMemo,
+  transformFor,
+  trackVForSlotScopes,
+  transformExpression,
+  transformSlotOutlet,
+  trackSlotScopes,
+  transformText,
+} = require(process.env.NODE_LIB + '/@vue/compiler-core')
+const {
+  isString,
+  extend
+} = require(process.env.NODE_LIB + '/@vue/shared')
+
+function runTransform(template, options = {}) {
+  const ast = baseParse(template)
+  transform(ast, {
+    nodeTransforms: [
+      transformExpression,
+      transformElement
+    ],
+    directiveTransforms: {
+      bind: transformBind
+    },
+    ...options
+  })
+
+  return ast.children[0]
+}
+
+function baseCompile(template, options = {}) {
+  const ast = isString(template) ? baseParse(template, options) : template
+  const prefixIdentifiers = false
+  const [nodeTransforms, directiveTransforms] =
+    getBaseTransformPreset(prefixIdentifiers)
+
+  transform(
+    ast,
+    extend({}, options, {
+      prefixIdentifiers,
+      nodeTransforms: [
+        ...nodeTransforms,
+        ...(options.nodeTransforms || []) // user transforms
+      ],
+      directiveTransforms: extend(
+        {},
+        directiveTransforms,
+        options.directiveTransforms || {} // user transforms
+      )
+    })
+  )
+
+  return generate(
+    ast,
+    extend({}, options, {
+      prefixIdentifiers
+    })
+  )
+}
+
+function getBaseTransformPreset(prefixIdentifiers) {
+  return [
+    [
+      transformOnce,
+      transformIf,
+      transformMemo,
+      transformFor,
+      ...(!__BROWSER__ && prefixIdentifiers
+        ? [
+            // order is important
+            trackVForSlotScopes,
+            transformExpression
+          ]
+        : __BROWSER__ && __DEV__
+        ? [transformExpression]
+        : []),
+      transformSlotOutlet,
+      transformElement,
+      trackSlotScopes,
+      transformText
+    ],
+    {
+      on: transformOn,
+      bind: transformBind,
+      model: transformModel
+    }
+  ]
+}
+#+end_src
+
+#+end_details
+* v-bind
+
+#+begin_export html
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <div id="app-b-bind"></div>
+  <script>
+  Vue.createApp({
+  template: `
+  <input style="width:300px" v-bind:modelValue="foo" @input="handleInput" placeholder="<el-input v-bind:modelValue='foo' .../>" />
+  <span>value: {{ foo }}</span>
+  `,
+  setup() {
+    const foo = Vue.ref(0)
+    return {
+      foo,
+      handleInput(e) {
+        foo.value = e.target.value
+      }
+    }
+  }
+  }).use(ElementPlus).mount('#app-b-bind')
+  </script>
+</body>
+</html>
+#+end_export
+
+red:Testing
+
+#+html: <br>
+#+begin_details parser :title-color red
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const ast = baseParse(`<div v-bind:foo="foo" v-bind:bar="bar"/>`)
+log('prop foo', ast.children[0].props[0])
+log('prop bar', ast.children[0].props[1])
+#+end_src
+
+合并使用：
+
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const ast = baseParse(`<div v-bind="{foo:'foo',bar:'bar'}"/>`)
+console.log(ast.children[0].props[0])
+#+end_src
+#+end_details
+
+#+html: <br>
+#+begin_details transform :title-color red
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const ast = runTransform(`<div v-bind:foo="foo" v-bind:bar="bar"/>`)
+log('prop foo', ast.props[0])
+log('prop bar', ast.props[1])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+--------- prop foo ---------
+{
+  type: 7,
+  name: 'bind',
+  exp: {
+    type: 4,
+    content: 'foo',
+    isStatic: false,
+    constType: 0,
+    loc: { start: [Object], end: [Object], source: 'foo' }
+  },
+  arg: {
+    type: 4,
+    content: 'foo',
+    isStatic: true,
+    constType: 3,
+    loc: { start: [Object], end: [Object], source: 'foo' }
+  },
+  modifiers: [],
+  loc: {
+    start: { column: 6, line: 1, offset: 5 },
+    end: { column: 22, line: 1, offset: 21 },
+    source: 'v-bind:foo="foo"'
+  }
+}
+--------- prop bar ---------
+{
+  type: 7,
+  name: 'bind',
+  exp: {
+    type: 4,
+    content: 'bar',
+    isStatic: false,
+    constType: 0,
+    loc: { start: [Object], end: [Object], source: 'bar' }
+  },
+  arg: {
+    type: 4,
+    content: 'bar',
+    isStatic: true,
+    constType: 3,
+    loc: { start: [Object], end: [Object], source: 'bar' }
+  },
+  modifiers: [],
+  loc: {
+    start: { column: 23, line: 1, offset: 22 },
+    end: { column: 39, line: 1, offset: 38 },
+    source: 'v-bind:bar="bar"'
+  }
+}
+undefined
+#+end_example
+
+合并：
+
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const ast = runTransform(`<div v-bind="{foo:'foo',bar:'bar'}"/>`)
+log('prop foo', ast.props[0])
+#+end_src
+
+#+RESULTS:
+#+begin_example
+--------- prop foo ---------
+{
+  type: 7,
+  name: 'bind',
+  exp: {
+    type: 4,
+    content: "{foo:'foo',bar:'bar'}",
+    isStatic: false,
+    constType: 0,
+    loc: { start: [Object], end: [Object], source: "{foo:'foo',bar:'bar'}" }
+  },
+  arg: undefined,
+  modifiers: [],
+  loc: {
+    start: { column: 6, line: 1, offset: 5 },
+    end: { column: 36, line: 1, offset: 35 },
+    source: `v-bind="{foo:'foo',bar:'bar'}"`
+  }
+}
+undefined
+#+end_example
+
+#+end_details
+
+#+html: <br>
+#+begin_details compile :title-color red
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const { code, ast } = baseCompile(`<div v-bind:foo="foo" :bar="bar" />`)
+log('ast', ast.children[0].codegenNode)
+log('ast codegenNode props arguments', ast.children[0].codegenNode.props.properties)
+log('code', code)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+--------- ast ---------
+{
+  type: 13,
+  tag: '"div"',
+  props: {
+    type: 15,
+    loc: {
+      start: [Object],
+      end: [Object],
+      source: '<div v-bind:foo="foo" :bar="bar" />'
+    },
+    properties: [ [Object], [Object] ]
+  },
+  children: undefined,
+  patchFlag: '8 /* PROPS */',
+  dynamicProps: '["foo", "bar"]',
+  directives: undefined,
+  isBlock: true,
+  disableTracking: false,
+  isComponent: false,
+  loc: {
+    start: { column: 1, line: 1, offset: 0 },
+    end: { column: 36, line: 1, offset: 35 },
+    source: '<div v-bind:foo="foo" :bar="bar" />'
+  }
+}
+--------- ast codegenNode props arguments ---------
+[
+  {
+    type: 16,
+    loc: { source: '', start: [Object], end: [Object] },
+    key: {
+      type: 4,
+      content: 'foo',
+      isStatic: true,
+      constType: 3,
+      loc: [Object]
+    },
+    value: {
+      type: 4,
+      content: 'foo',
+      isStatic: false,
+      constType: 0,
+      loc: [Object]
+    }
+  },
+  {
+    type: 16,
+    loc: { source: '', start: [Object], end: [Object] },
+    key: {
+      type: 4,
+      content: 'bar',
+      isStatic: true,
+      constType: 3,
+      loc: [Object]
+    },
+    value: {
+      type: 4,
+      content: 'bar',
+      isStatic: false,
+      constType: 0,
+      loc: [Object]
+    }
+  }
+]
+--------- code ---------
+const _Vue = Vue
+
+return function render(_ctx, _cache) {
+  with (_ctx) {
+    const { openBlock: _openBlock, createElementBlock: _createElementBlock } = _Vue
+
+    return (_openBlock(), _createElementBlock("div", {
+      foo: foo,
+      bar: bar
+    }, null, 8 /* PROPS */, ["foo", "bar"]))
+  }
+}
+undefined
+#+end_example
+
+合并：
+
+#+begin_src js -n -r :exports both
+<<vue-pkgs>>
+
+const { code, ast } = baseCompile(`<div v-bind="{foo:'foo',bar:'bar'}" />`)
+log('ast', ast.children[0].codegenNode)
+log('ast codegenNode props arguments', ast.children[0].codegenNode.props.arguments)
+log('code', code)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+--------- ast ---------
+{
+  type: 13,
+  tag: '"div"',
+  props: {
+    type: 14,
+    loc: { source: '', start: [Object], end: [Object] },
+    callee: Symbol(normalizeProps),
+    arguments: [ [Object] ]
+  },
+  children: undefined,
+  patchFlag: '16 /* FULL_PROPS */',
+  dynamicProps: undefined,
+  directives: undefined,
+  isBlock: true,
+  disableTracking: false,
+  isComponent: false,
+  loc: {
+    start: { column: 1, line: 1, offset: 0 },
+    end: { column: 39, line: 1, offset: 38 },
+    source: `<div v-bind="{foo:'foo',bar:'bar'}" />`
+  }
+}
+--------- ast codegenNode props arguments ---------
+[
+  {
+    type: 14,
+    loc: { source: '', start: [Object], end: [Object] },
+    callee: Symbol(guardReactiveProps),
+    arguments: [ [Object] ]
+  }
+]
+--------- code ---------
+const _Vue = Vue
+
+return function render(_ctx, _cache) {
+  with (_ctx) {
+    const { normalizeProps: _normalizeProps, guardReactiveProps: _guardReactiveProps, openBlock: _openBlock, createElementBlock: _createElementBlock } = _Vue
+
+    return (_openBlock(), _createElementBlock("div", _normalizeProps(_guardReactiveProps({foo:'foo',bar:'bar'})), null, 16 /* FULL_PROPS */))
+  }
+}
+undefined
+#+end_example
+#+end_details
+
+
+如上各阶段的输出结果，对于 ~v-bind:foo,v-bind:bar~ 和 ~v-bind="{foo，bar}"~ 的处理，
+分析如下
+
+解析出来的参数,前者 ~arg~ 是 ~arg: { content: 'bar', ...}~ 后者是 ~arg:undefined~ 这一
+点很明显不用多说啥，这个也决定了 codegen 阶段如何生成代码
+
+codegen 阶段会根据 ~type:7//DIRECTIVE~ 来调用对应的 generate 函数
+
+div 对应的 codegenNode(ast.children[0].codegenNode):
+
+#+begin_src js
+{
+  type: 13, // VNODE_CALL
+  tag: '"div"',
+  props: {
+    type: 14, // JS_CALL_EXPRESSION
+    loc: { source: '', start: [Object], end: [Object] },
+    callee: Symbol(normalizeProps), (ref:json-normalizeProps)
+    // callee: Symbol(guardReactiveProps)
+    arguments: [ [Object] ] (ref:json-guardReactiveProps)
+  },
+  children: undefined,
+  patchFlag: '16 /* FULL_PROPS */',
+  dynamicProps: undefined,
+  directives: undefined,
+  isBlock: true,
+  disableTracking: false,
+  isComponent: false,
+  loc: {
+    start: { column: 1, line: 1, offset: 0 },
+    end: { column: 39, line: 1, offset: 38 },
+    source: `<div v-bind="{foo:'foo',bar:'bar'}" />`
+  }
+}
+#+end_src
+
+13, 14 分别表示： ~VNODE_CALL~, ~JS_CALL_EXPRESSION~
+
+green:VNODE_CALL 调用 [[id:1c43b047-4d39-46a8-b3d8-40313179ff8d][genVNodeCall()]] 生成  ~(_openBlock() ,...~
+
+green:JS_CALL_EXPRESSION 调用 [[id:33b0bdac-8475-41cf-8a91-473df4618137][genCallExpression()]] 生成函数调用的，这里如：
+~_normalizeProps(_guardReactiveProps...~
+
+解析完之后的 helper: [[(json-normalizeProps)][normalizeProps]], 然后 arguments 对应的 helper: [[(json-guardReactiveProps)][guardReactiveProps]]
+
+#+begin_src typescript -n -r
+// JavaScript
+function genCallExpression(node: CallExpression, context: CodegenContext) {
+  const { push, helper, pure } = context
+  const callee = isString(node.callee) ? node.callee : helper(node.callee)
+  if (pure) {
+    push(PURE_ANNOTATION)
+  }
+  push(callee + `(`, node)
+  genNodeList(node.arguments, context)
+  push(`)`)
+}
+#+end_src
+
+所以最后生成的 ~v-bind="{...}"~ 的 props 是：
+
+~_normalizeProps(_guardReactiveProps({foo:'foo',bar:'bar'})), null, 16 /* FULL_PROPS */))~
+
+区别在:
+
+~v-bind:foo,v-bind:bar~ 生成的 ast codegenNode 这个处理是在 [[id:d3cd8afe-f0e9-43b5-96f6-22837f5bec8d][transformBind]]:
+
+#+begin_src js
+props: {
+  type: 15,
+  loc: {
+    start: [Object],
+    end: [Object],
+    source: '<div v-bind:foo="foo" :bar="bar" />'
+  },
+  properties: [ [Object], [Object] ]
+}
+
+// render
+const _Vue = Vue
+
+return function render(_ctx, _cache) {
+  with (_ctx) {
+    const { openBlock: _openBlock, createElementBlock: _createElementBlock } = _Vue
+
+    return (_openBlock(), _createElementBlock("div", {
+      foo: foo,
+      bar: bar
+    }, null, 8 /* PROPS */, ["foo", "bar"]))
+  }
+}
+#+end_src
+
+而 ~v-bind="{...}"~ 生成的是，因为没有参数和 v-on 无参数时一样，它们的处理是在
+[[id:27ceff76-40d6-40b4-9e6d-49a85b3dc27f][transformElement()]] 中：
+
+#+begin_src js
+props: {
+  type: 14,
+  loc: { source: '', start: [Object], end: [Object] },
+  callee: Symbol(normalizeProps),
+  arguments: [ [Object] ]
+}
+
+// render
+const _Vue = Vue
+
+return function render(_ctx, _cache) {
+  with (_ctx) {
+    const { normalizeProps: _normalizeProps, guardReactiveProps: _guardReactiveProps, openBlock: _openBlock, createElementBlock: _createElementBlock } = _Vue
+
+    return (_openBlock(), _createElementBlock("div", _normalizeProps(_guardReactiveProps({foo:'foo',bar:'bar'})), null, 16 /* FULL_PROPS */))
+  }
+}
+#+end_src
+
+且关键不同点就在 ast codegenNode 中的 props.properties 和 props.arguments 前者是
+正常的使用，后者是无参数时使用直接就在 [[id:27ceff76-40d6-40b4-9e6d-49a85b3dc27f][transformElement()]] 处理掉了。
+
+剩下的就是看下 ~_normalizeProps(_guardReactiveProps({foo:'foo',bar:'bar'}))~ 这个
+最后返回了啥(gray:简单的合并)：
+
+#+begin_src typescript -n -r
+function normalizeProps(props: Record<string, any> | null) {
+  if (!props) return null
+  let { class: klass, style } = props
+  if (klass && !isString(klass)) {
+    props.class = normalizeClass(klass)
+  }
+  if (style) {
+    props.style = normalizeStyle(style)
+  }
+  return props
+}
+
+function guardReactiveProps(props: (Data & VNodeProps) | null) {
+  if (!props) return null
+  return isProxy(props) || InternalObjectKey in props
+    ? extend({}, props)
+    : props
+}
+
+#+end_src
+
+/还会说你不懂 v-bind 吗？嘿嘿 /😎😎~~~/
+
+* COMMENT Local Variables :ARCHIVE:
+# Local Variables:
+# after-save-hook: gcl/org-html-export-to-html
+# End:

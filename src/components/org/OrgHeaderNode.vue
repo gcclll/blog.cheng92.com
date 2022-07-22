@@ -13,7 +13,7 @@ const props = withDefaults(
       title: '',
       level: 1,
     },
-  }
+  },
 )
 
 const tag = computed(() => {
