@@ -1,5 +1,5 @@
 <script lang="ts" setup>
- import { baseParse } from 'org-file-parser-with-js'
+ import { baseParse, OrgNodeTypes } from '~/parser'
  import axios from 'axios'
 
  const source = ref(``)

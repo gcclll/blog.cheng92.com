@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { OrgNodeTypes, type OrgEmphasisNode } from 'org-file-parser-with-js'
+import { OrgNodeTypes, OrgEmphasisNode } from '~/parser'
 
 const props = withDefaults(
   defineProps<{

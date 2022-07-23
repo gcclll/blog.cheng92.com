@@ -1,17 +1,21 @@
 <script lang="ts" setup>
- import { OrgNodeTypes, OrgColorfulTextNode, type OrgEmphasisNode } from 'org-file-parser-with-js'
+import {
+  OrgNodeTypes,
+  OrgColorfulTextNode,
+  OrgEmphasisNode,
+} from '~/parser'
 
- const props = withDefaults(
-   defineProps<{
-     data: OrgColorfulTextNode
-   }>(),
-   {
-     data: {
-       type: OrgNodeTypes.COLORFUL_TEXT,
-       name: ''
-     }
-   }
- )
+const props = withDefaults(
+  defineProps<{
+    data: OrgColorfulTextNode
+  }>(),
+  {
+    data: {
+      type: OrgNodeTypes.COLORFUL_TEXT,
+      name: '',
+    },
+  },
+)
 </script>
 
 <template>
@@ -21,9 +25,9 @@
 </template>
 
 <style lang="scss" scoped>
- abbrev {
-   border-bottom: 1px dotted #000;
-   color: red;
-   text-decoration: none;
- }
+abbrev {
+  border-bottom: 1px dotted #000;
+  color: red;
+  text-decoration: none;
+}
 </style>
