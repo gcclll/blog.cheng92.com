@@ -20,7 +20,7 @@ specifiers:
   markdown-it-link-attributes: ^4.0.0
   markdown-it-prism: ^2.2.4
   nprogress: ^0.2.0
-  org-file-parser-with-js: ^0.1.18
+  org-file-parser-with-js: ^0.1.19
   pinia: ^2.0.16
   pnpm: ^7.5.2
   prism-theme-vars: ^0.2.4
@@ -49,7 +49,7 @@ dependencies:
   '@vueuse/head': 0.7.6_vue@3.2.37
   axios: 0.27.2
   nprogress: 0.2.0
-  org-file-parser-with-js: 0.1.18
+  org-file-parser-with-js: 0.1.19
   pinia: 2.0.16_j6bzmzd4ujpabbp5objtwxyjp4
   prism-theme-vars: 0.2.4
   sass: 1.53.0
@@ -1620,6 +1620,14 @@ packages:
       rollup: 2.75.7
     dev: true
 
+  /@rollup/plugin-json/4.1.0:
+    resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0
+    dev: false
+
   /@rollup/plugin-node-resolve/11.2.1_rollup@2.75.7:
     resolution: {integrity: sha512-yc2n43jcqVyGE2sqV5/YCmocy9ArjVAP/BeXyTtADTBBX6V0e5UMqwO8CdQ0kzjb6zu5P1qMzsScCMRvE9OlVg==}
     engines: {node: '>= 10.0.0'}
@@ -1644,6 +1652,17 @@ packages:
       magic-string: 0.25.9
       rollup: 2.75.7
     dev: true
+
+  /@rollup/pluginutils/3.1.0:
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.1
+    dev: false
 
   /@rollup/pluginutils/3.1.0_rollup@2.75.7:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
@@ -1697,7 +1716,6 @@ packages:
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
-    dev: true
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
@@ -4046,7 +4064,6 @@ packages:
 
   /estree-walker/1.0.1:
     resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
-    dev: true
 
   /estree-walker/2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
@@ -5720,9 +5737,13 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /org-file-parser-with-js/0.1.18:
-    resolution: {integrity: sha512-JJuDpyMpj4Tqc3VXpy1FcYt+1FUAF/WCD5YI1njW9TabDIu3HEcwbgmJB7ALVw08OE0H94V50fCh08S5XtJCVg==}
+  /org-file-parser-with-js/0.1.19:
+    resolution: {integrity: sha512-J3KvJMn128+hjT3ZAG+2PS9DvMa9DjjCgTEe+jpHIkdhNokU/YPwdyKju0pO98ULxx6XMNOcECECapG1W7YBWA==}
     engines: {node: '>=10'}
+    dependencies:
+      '@rollup/plugin-json': 4.1.0
+    transitivePeerDependencies:
+      - rollup
     dev: false
 
   /ospath/1.2.2:
