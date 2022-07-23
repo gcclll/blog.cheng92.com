@@ -1,19 +1,18 @@
 <script lang="ts" setup>
  import { baseParse, OrgNodeTypes } from '~/parser'
- import axios from 'axios'
+ // import axios from 'axios'
 
  const source = ref(``)
- axios.get('/posts/test.org').then(res => {
-   source.value = res.data
- })
-
+ // axios.get('/posts/test.org').then(res => {
+ //   source.value = res.data
+ // })
+ //
  const nodes = ref([])
 
  watch(
    source,
    (value: string) => {
      nodes.value = baseParse(value)
-     console.log(nodes.value)
    },
    {
      immediate: true,
