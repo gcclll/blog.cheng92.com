@@ -40,6 +40,7 @@
 
 <style scoped>
 div.columns-2 > .w-full {
-  min-height: 70vh;
+  height: 70vh;
+  overflow: scroll;
 }
 </style>
