@@ -3,17 +3,27 @@
 #+email: gccll.love@gmail.com
 
 
+* Colorful text
+
+<red:text1 text2>
+
+i should red:text1 green:text between texts.
+
+* Text Node
 I'am test test!!!!
 
 <2022-02-12 18:00 Wed +1d> test <2033-03-13 22:00> test !!xxx!!
 
 I'm an image link [[a.png]], you can display it in org file.
 
+* Links
 inner link: <<test>> ???
 
+link with abbrev: [[d.png:d-img][description]] ???
+* keywords
 keywords: TODO, DONE, CANCELLED, ???
 
-link with abbrev: [[d.png:d-img][description]] ???
+* List
 
 Orderless List:
 
@@ -25,6 +35,8 @@ Order List:
 1. order list item 1
 2. order list item 2
 
+
+* textbox
 
 #+begin_textbox
 test box
@@ -39,6 +51,8 @@ test box
 
 
 #+end_textbox
+
+* sub & sup scripts
 
 suptext^sup xxxx text subtext_sub jjjjkkkj
 

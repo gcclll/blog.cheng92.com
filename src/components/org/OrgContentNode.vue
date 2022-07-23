@@ -1,37 +1,38 @@
 <script lang="ts" setup>
-import { OrgNodeTypes } from '~/parser'
+ // https://github.com/antfu/vitesse/issues/296
+ import { OrgNodeTypes } from '~/parser'
 
-const props = withDefaults(
-  defineProps<{
-    nodes: Array<{
-      type: OrgNodeTypes
-    }>
-  }>(),
-  {
-    nodes: [] as any,
-  },
-)
+ const props = withDefaults(
+   defineProps<{
+     nodes: Array<{
+       type: OrgNodeTypes
+     }>
+   }>(),
+   {
+     nodes: [] as any,
+   },
+ )
 
-// the properties of the whole chapter
-// TODO set to page property
-const properties = reactive<{ title?: string }>({})
-const nodeList = ref([])
+ // the properties of the whole chapter
+ // TODO set to page property
+ const properties = reactive<{ title?: string }>({})
+ const nodeList = ref([])
 
-watch(
-  () => props.nodes,
-  (nodes) => {
-    nodeList.value = []
-    props.nodes.forEach((node) => {
-      if (node.type === OrgNodeTypes.PROPERTY)
-        properties[node.name] = node.value.trim()
-      else nodeList.value.push(node)
-    })
-  },
-  {
-    deep: true,
-    immediate: true,
-  },
-)
+ watch(
+   () => props.nodes,
+   (nodes) => {
+     nodeList.value = []
+     props.nodes.forEach((node) => {
+       if (node.type === OrgNodeTypes.PROPERTY)
+       properties[node.name] = node.value.trim()
+       else nodeList.value.push(node)
+     })
+   },
+   {
+     deep: true,
+     immediate: true,
+   },
+ )
 </script>
 
 <template>

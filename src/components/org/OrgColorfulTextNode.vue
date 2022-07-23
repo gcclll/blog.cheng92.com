@@ -16,12 +16,16 @@ const props = withDefaults(
     },
   },
 )
+
+ function padContent(content: string) {
+   return ` ${content} `
+ }
 </script>
 
 <template>
   <!-- TODO hover to show documentation -->
-  <abbrev v-if="data.name === 'doc'">{{ data.content }}</abbrev>
-  <font v-else :color="data.name">{{ data.content }}</font>
+  <abbrev v-if="data.name === 'doc'">{{ padContent(data.content) }}</abbrev>
+  <font v-else :color="data.name">{{ padContent(data.content) }}</font>
 </template>
 
 <style lang="scss" scoped>

@@ -27,6 +27,11 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag: string) => ['font', 'abbrev'].indexOf(tag) > -1,
+        },
+      },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages
@@ -48,10 +53,7 @@ export default defineConfig({
         '@vueuse/core',
       ],
       dts: 'src/auto-imports.d.ts',
-      dirs: [
-        'src/composables',
-        'src/store',
-      ],
+      dirs: ['src/composables', 'src/store'],
       vueTemplate: true,
     }),
 
@@ -140,7 +142,9 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    onFinished() { generateSitemap() },
+    onFinished() {
+      generateSitemap()
+    },
   },
 
   ssr: {
