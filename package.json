@@ -15,9 +15,12 @@
     "up": "taze major -I"
   },
   "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
     "@vueuse/core": "^9.1.0",
     "@vueuse/head": "^0.7.9",
+    "highlight.js": "^11.6.0",
     "nprogress": "^0.2.0",
+    "org-file-parser-with-js": "^0.1.33",
     "pinia": "^2.0.17",
     "vue": "^3.2.37",
     "vue-demi": "^0.13.6",
