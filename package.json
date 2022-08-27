@@ -24,6 +24,7 @@
     "nprogress": "^0.2.0",
     "org-file-parser-with-js": "^0.1.33",
     "pinia": "^2.0.17",
+    "roboto-fontface": "^0.10.0",
     "vue": "^3.2.37",
     "vue-demi": "^0.13.6",
     "vue-i18n": "^9.2.2",
