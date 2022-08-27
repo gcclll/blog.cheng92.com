@@ -9,7 +9,9 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    OrgBlock: typeof import('./components/org/OrgBlock.vue')['default']
     OrgBlockNode: typeof import('./components/org/OrgBlockNode.vue')['default']
+    OrgContent: typeof import('./components/org/OrgContent.vue')['default']
     OrgContentNode: typeof import('./components/org/OrgContentNode.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
