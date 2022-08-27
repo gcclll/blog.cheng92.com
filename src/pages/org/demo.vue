@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import type { OrgNodeTypes, OrgRootNode } from '~/utils/parser'
 import { baseParse } from '~/utils/parser'
+import axios from 'axios'
 
 const source = ref('')
 const nodes = ref<OrgRootNode>({})

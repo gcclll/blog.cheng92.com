@@ -14,6 +14,8 @@ import LinkAttributes from 'markdown-it-link-attributes'
 import Unocss from 'unocss/vite'
 import Shiki from 'markdown-it-shiki'
 
+import Vuetify from 'vite-plugin-vuetify'
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -26,6 +28,8 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
     }),
+
+    Vuetify({ autoImport: true }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({

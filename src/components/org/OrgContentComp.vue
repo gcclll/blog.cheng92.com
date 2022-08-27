@@ -38,7 +38,7 @@ watch(
 
 <template>
   <div class="org-content">
-    <OrgHeaderNode
+    <OrgHeaderComp
       class="text-center"
       style="display: block"
       :data="{ type: OrgNodeTypes.HEADER, content: properties.title, level: 1 }"
