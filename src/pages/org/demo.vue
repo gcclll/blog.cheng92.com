@@ -37,7 +37,7 @@ onMounted(() => {
       </v-col>
       <v-col cols="6">
         <v-card-text class="org-content">
-          <OrgContent :nodes="nodes.children" />
+          <OrgContentComp :nodes="nodes.children" />
         </v-card-text>
       </v-col>
     </v-row>
