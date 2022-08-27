@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { OrgNodeTypes, OrgBlockNode } from '@/utils/parser'
+import { type OrgBlockNode, OrgNodeTypes } from '@/utils/parser'
 
 const props = withDefaults(
   defineProps<{
