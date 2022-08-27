@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { OrgNodeTypes, OrgRootNode } from '@utils/parser'
+import type { OrgNodeTypes, OrgRootNode } from '@/utils/parser'
 import { baseParse } from '@/utils/parser'
 
 const source = ref('')
@@ -32,7 +32,7 @@ onMounted(() => {
     <v-row no-gutters>
       <v-col cols="6">
         <v-card-text class="left">
-          <v-textarea class="org-source" v-model="source" />
+          <v-textarea v-model="source" class="org-source" />
         </v-card-text>
       </v-col>
       <v-col cols="6">
