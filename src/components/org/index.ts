@@ -1,1 +1,2 @@
-export const components = []
+import OrgBlock from './OrgBlock.vue'
+export const components = [OrgBlock]
