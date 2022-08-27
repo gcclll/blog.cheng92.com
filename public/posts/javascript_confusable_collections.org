@@ -1,0 +1,268 @@
+:PROPERTIES:
+:ID:       44f588fc-94b5-4d3d-ae87-7a60366972cb
+:END:
+#+SETUPFILE:~/.gclrc/org/hugo_setup.org
+#+HUGO_SLUG: javascript_confusable_collections
+#+HTML_HEAD: <meta name="category" content="javascript"/>
+#+HTML_HEAD: <meta name="tags" content="confusable"/>
+#+HTML_HEAD: <meta name="createdAt" content="2022-05-10 14:09:15"/>
+#+PROPERTY: header-args:js :exports both
+#+PROPERTY: header-args :noweb no-export
+#+TITLE: JavaScript Confusable Collections
+<badge: GCCLL | Homepage | green | / | gnu-emacs | tinder>
+
+#+begin_box
+本文收集了<red:开发>、<green:学习>、<blue:冲浪>过程中遇到的各种容易产生疑惑的知识点。
+#+end_box
+#+html: <br>
+
+* Array
+** Array.prototype.sort
+
+#+begin_src js -n -r :exports both
+const arr = [5, 14, 22, 9]
+console.log(arr.sort().join(','))
+#+end_src
+
+#+RESULTS:
+: 14,22,5,9
+: undefined
+
+是不是很疑惑怎么不是 ~5,9,14,22~ ?
+
+red:解惑：
+
+[[https://tc39.es/ecma262/#sec-array.prototype.sort][ECMAScript® 2023 Language Specification]] 这里[fn:sort]是标准里 sort 方法实现的步
+骤，下面是其伪码：
+
+#+begin_src js -n -r :exports code
+function sort(compareFn) {
+  if (compareFn && typeof compareFn !== 'function') {
+    throw new TypeError('compareFn must be a function')
+  }
+
+  let obj = Object(this)
+  let len = obj.length
+
+  if (len == void 0) {
+    throw new Error('sort 不能在非数组对象上使用')
+  }
+
+  function SortCompare(x, y) {
+    if (x === undefined && y === undefined) return +0
+
+    if (x === undefined) return 1
+
+    if (y === undefined) return -1
+
+    // 结果又提供的比较函数决定
+    if (compareFn) {
+      let v = compareFn(x, y)
+      if (Number.isNaN(v)) return +0
+
+      return v
+    }
+
+    // 如果没有 compareFn 会将比较的两个参数转成字符串
+    let xString = String(x), yString = String(y) (ref:sort-no-compareFn-toString)
+    // 这里用到了 isLessThan 比较(https://tc39.es/ecma262/#sec-islessthan)
+    // 这里先省略了，直接字符串比较了，有兴趣的同学可以进上面的链接了解字符串比较详情
+    let xSmaller = xString < yString
+    if (xSmaller) return -1
+
+    let ySmaller = yString < xString
+    if (ySmaller) return 1
+
+    return +0
+
+  }
+
+  // 这里是进行比较后替换位置
+  return SortIndexedProperties(obj, len, SortCompare)
+}
+#+end_src
+
+如上面的伪码，实现步骤就是先检测有没有 compareFn 函数，这个函数决定了比较的方式，
+是不是应该转成字符串去比较[[(sort-no-compareFn-toString)]] ，所以在使用 sort 的时候
+尽量都传入比较函数给它。
+
+字符串比较：
+#+begin_src js -n -r :exports both
+console.log('14 < 22 < 5 < 9', '14' < '22', '22' < '5', '5' < '9')
+#+end_src
+
+#+RESULTS:
+: 14 < 22 < 5 < 9 true true true
+: undefined
+
+正确使用：
+
+#+begin_src js -n -r :exports both
+const arr = [5, 14, 22, 9]
+console.log(arr.sort((a, b) => a - b).join(','))
+#+end_src
+
+#+RESULTS:
+: 5,9,14,22
+: undefined
+* 闭包
+
+** +setTimeout
+
+#+begin_src js -n -r
+for (var i = 0; i < 3; i++) {
+  const log = () => {
+    console.log('')
+    console.log(i)
+  }
+  setTimeout(log, 100) (ref:closure-01-log)
+}
+
+#+end_src
+
+#+RESULTS:
+: undefined
+: 3
+:
+: 3
+:
+: 3
+
+red:输出结果解释：
+
+for 循环每次执行都会重新执行一遍 ~var i = 0~ 操作，而对于 ~var~ 它只会在第一次时候是
+声明，后面都是重新赋值，所以每次传递给闭包的 ~i~ 其实在内存里都是同一个地址。
+
+而在后面([[(closure-01-log)]])并没有立即执行 log ，只是将其加入到了微任务队列中，等
+到同步代码执行完成，这里也就是 for 循环执行完之后才会去执行微任务队列中的三个
+log() ，而此时的上下文中的 i 值其实已经是 3 了，也就是 for 执行完之后的最终值。
+
+green:解决方案
+
+1. ~var i = 0~ 改成 ~let i = 0~ 让每次遍历都创新创建[fn:let-const]一个新的变量 i (var[fn:var] 则不会)。
+
+  #+begin_src js -n -r
+  for (let i = 0; i < 3; i++) {
+    const log = () => {
+        console.log('')
+        console.log(i)
+    }
+    setTimeout(log, 100)
+  }
+  #+end_src
+
+  #+RESULTS:
+  : undefined
+  : 0
+  :
+  : 1
+  :
+  : 2
+
+2. 立即函数再包一层调用传参方式
+
+  #+begin_src js -n -r
+  for (var i = 0; i < 3; i++) {
+    const log = (((i) => {
+      return () => {
+        console.log('')
+        console.log(i)
+      }
+    })(i))
+    setTimeout(log, 100)
+  }
+  #+end_src
+
+  #+RESULTS:
+  : undefined
+  : 0
+  :
+  : 1
+  :
+  : 2
+
+
+关于 var[fn:var] 声明变量的标准说明：
+
+#+begin_box var 声明语法标准解释
+A var statement declares variables that are scoped to the running execution
+context's VariableEnvironment. Var variables are created when their containing
+Environment Record is instantiated and are initialized to undefined when
+created. Within the scope of any VariableEnvironment a common BindingIdentifier
+may appear <red:in more than one VariableDeclaration but those declarations
+collectively define only one variable>. <blue:A variable defined by a
+VariableDeclaration with an Initializer is assigned the value of its
+Initializer's AssignmentExpression when the VariableDeclaration is executed, not
+when the variable is created>.
+#+end_box
+#+html: <br>
+
+red:红色部分 意思是 var 可以有多个声明语句，但是不管声明几次实际都只会创建一个变量。
+
+blue:蓝色部分 意思是带赋值的 var 语句，并不会在创建它的时候就赋值，而是第一个执
+行的时候才会真正被赋值(这也就是blue:var只会声明提升而不会提升赋值)
+
+#+begin_box 提升有关知识扩展
+
+提升是指当要执行的代码在初始化的时候变量和函数会提升到它作用域的开头部分，这样即使你在它书
+写位置前面去使用它也是不会报错，就是因为它被提升了。
+
+如：
+#+begin_src js -n -r
+function test() {
+  // 相当于 varValue, getValue 被提升到这里来了
+  console.log('value from function = ' + getValue() + ', value from var = ' + varValue)
+  var varValue = 200
+  function getValue() {
+    return 100
+  }
+}
+test()
+#+end_src
+
+如上面的输出，就是因为 var 和 getValue 这两个被提升到了 test() 函数内的作用域顶
+部才会被第一行的 console.log 访问到。但是 varValue 值是 undefined 而 getValue()
+却可以执行，这是因为不同类型提升方式是不一样的(<red:var 变量只会声明提升，不会赋值
+提升，而声明式函数是声明和赋值都会提升>)
+
+<kbd:注意，函数只有声明式函数才会声明和赋值同时提升，表达式函数和普通的 var 变量一样，只提升声明>。
+#+end_box
+#+html: <br>
+* 语法
+
+** return
+
+来看下下面的例子
+
+#+begin_src js -n -r
+
+function test(item) {
+  return
+    [item]
+}
+console.log('test result: ' + test())
+#+end_src
+
+#+RESULTS:
+: test result: undefined
+: undefined
+
+😂 有没写过这这样代码呢？？？
+
+原因[fn:return]： return 语句后面不能有换行符，下面是 [[https://tc39.es/ecma262/#prod-ReturnStatement][ECMAScript® 2023
+Language Specification]] 中 return 语法的定义
+
+[[../assets/img/tmp/js-return-no-linebreak.png]]
+
+/orange:所有没事多看看标准还是有必要的/ 。
+* Footnotes
+
+[fn:let-const] https://tc39.es/ecma262/#sec-let-and-const-declarations
+[fn:sort] https://tc39.es/ecma262/#sec-array.prototype.sort
+[fn:var] https://tc39.es/ecma262/#sec-variable-statement
+[fn:return] https://tc39.es/ecma262/#prod-ReturnStatement
+
+* COMMENT Local Variables       :ARCHIVE:
+# Local Variables:
+# after-save-hook: gcl/org-html-export-to-html
+# End:

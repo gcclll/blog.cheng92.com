@@ -1,0 +1,63 @@
+:PROPERTIES:
+:ID:       93914fa7-93b9-464c-8e6d-98fb5107966d
+:END:
+#+SETUPFILE:~/.gclrc/org/hugo_setup.org
+#+HUGO_SLUG: incurable_deseases
+#+PROPERTY: header-args:js :exports both
+#+PROPERTY: header-args :noweb no-export
+#+HTML_HEAD: <meta name="category" content="others"/>
+#+HTML_HEAD: <meta name="tags" content="issues"/>
+#+HTML_HEAD: <meta name="createdAt" content="2022-01-07 13:50:53"/>
+#+TITLE: incurable-deseases(疑难杂症)
+<badge: GCCLL | Homepage | green | / | gnu-emacs | tinder>
+
+* git
+
+** xcode-select: Failed to locate 'git'
+
+#+begin_question-block
+@@html:<p>❓ <strong>Question</strong> ❓</p>@@
+
+git: error: sh -c '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk macosx -find git 2> /dev/null' failed with exit code 17920: (null) (errno=No such file or directory)
+xcode-select: Failed to locate 'git', requesting installation of command line developer tools.
+
+#+begin_answer-block
+@@html:<p>❗ <strong>Answer</strong> ❗</p>@@
+
+green:FIX: [[https://developer.apple.com/forums/thread/666584][After upgrade to Big Sur git stopp… | Apple Developer Forums]]
+
+~$ sudo xcode-select -switch /Library/Developer/CommandLineTools~
+#+end_answer-block
+#+end_question-block
+
+** fatal: No url found for submodule path 'xxx' in .gitmodules
+
+#+begin_question-block
+@@html:<p>❓ <strong>Question</strong></p>@@
+
+➜  lazycat-emacs git:(master) git submodule update --init --recursive
+fatal: No url found for submodule path 'site-lisp/extensions/company-mode' in .gitmodules
+
+#+begin_answer-block
+@@html:<p>❗ <strong>Answer</strong></p>@@
+
+~$ git rm --cached -- site-lisp/extensions/company-mode'~
+#+end_answer-block
+#+end_question-block
+
+* brew
+
+** How to fix the Homebrew error `Permission denied @ apply2files`
+
+[[https://flaviocopes.com/homebrew-fix-permission-denied-apply2files/][How to fix the Homebrew error `Permission denied @ apply2files`]]
+
+~$ mkdir -p /Applications/Docker.app/Contents/Resources/cli-plugins~
+
+~$ brew cleanup~
+
+-> [[$HOME/.gclrc/bin/fix-brew-permission-denied-apply2files]]
+
+* COMMENT Local Variables :ARCHIVE:
+# Local Variables:
+# after-save-hook: gcl/org-html-export-to-html
+# End:

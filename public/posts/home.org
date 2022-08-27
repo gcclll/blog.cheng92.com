@@ -1,0 +1,75 @@
+:PROPERTIES:
+:ID:       a4647863-71e6-4764-88db-b80bfb963f69
+:END:
+#+SETUPFILE:~/.gclrc/org/hugo_setup.org
+#+HTML_HEAD: <meta name="createdAt" content="2022-02-22 09:11:03"/>
+#+HTML_HEAD: <link rel="stylesheet" href="/assets/css/home.css"/>
+#+HUGO_SLUG: home
+#+TITLE: Homepage
+
+#+begin_box 主页说明 :background-color custard
+博客基本： ElementPlus + doc:Vue3 + Emacs + doc:org-mode + Github + Netlify 实现。
+
+[[color:#67c23a][绿色标签，如： vue]] 表示分类，可点击该 blue:标签 可快速新建一个该分类的 doc:Tab
+页，包含该分类下的所有文章。
+
+[[color:#409eff][蓝色标签，如： setup]] 表示文章标签(blue:关键词)，可通过点击它新建一个包含该blue:关键词 的所
+有文章的 doc:tab 页。
+
+<green:如果想了解vue3 中具体哪一个知识点(源码)，可以留言哦，没有的则会抽空及时补上>😘。
+
+该站为临时博客站点，正在着手编写 [[https://www.npmjs.com/package/org-file-parser-with-js][org-file-parser-with-js - npm]] 插件，
+将来可以直接 Emacs -> Org Mode -> Org File -> Blog Post，完成之后不再需要借助其
+它工具生成文章。
+
+测试站点：[[https://www.cheng92.com/demo/org][若叶岂知秋]]
+#+end_box
+#+HTML: <div id="start"/><br><br>
+
+* [[id:c1cf80bc-b25e-439f-bdb1-c066c0755398][Coding Everything In Here]]
+* Emacs
+** DONE [[id:82acaa2e-9913-4c5b-83d9-57ac24698449][org-special-block-extras]]
+CLOSED: [2022-05-09 Mon 18:13]
+** [[id:193fb17e-b4ea-4b4b-bc78-056815359664][org-roam]]
+** [[id:e2bc5e53-a5f7-4aed-b0b1-644183b2932e][org-mode]]
+** [[id:B93391AC-9E77-46FF-BAFC-C344642557C9][Emacs ConfigurationV3]]
+** [[id:1F5B5C65-C3FE-466E-8C94-D1EAE54163FD][Emacs All Keybindings]]
+** [[id:2211091B-7400-44F9-A005-383B23BF4824][Org File Parser With JavaScript]]
+
+* Vue
+** [[id:42C57684-F9FF-49FF-A4FD-6B2916A369DF][Vue CLI 工具]]
+** [[id:8ce7491b-8996-44b3-b8cd-d857cfd32b53][Vue Directives]]
+** SOMEDAY [[id:83dc97dc-8e1c-44b0-9254-dfecbb5a4629][Vue ChangeLog]]
+** TODO [[id:1037e29e-a2c1-4a29-a346-1575d2ea6369][vue script setup]]
+** DONE [[id:f4fd05f7-cec7-46fd-8b58-c4c736b1a58c][build your own vue reactivity]]
+CLOSED: [2022-04-14 Thu 14:28]
+** DONE [[id:4a858df2-f6f8-4d2f-9cda-78c12cbf42b3][build your own vue scheduler]]
+CLOSED: [2022-04-18 Mon 14:49]
+** DONE [[id:5eff117f-92ba-490a-ba9c-e5f59e0cbe47][build your own vue compiler-core]]
+CLOSED: [2022-04-27 Wed 14:46]
+** DONE [[id:f17d718c-0d00-4c10-b3f9-e9e0d8295193][build your own vue compiler-dom]]
+CLOSED: [2022-04-28 Thu 16:17]
+** WAIT [[id:24104ef5-bb8e-4bc3-8a61-3fc2e5be34a3][build your own vue compiler-sfc]]
+** DOING [[id:d0fc0f76-8429-429c-99a0-206792da22ad][build your own vue runtime-core]]
+** [[id:4CA2735D-723C-4DAF-8273-20DF05D660DA][blog with nuxtjs]]
+* React
+** [[id:293eb7ed-0b86-4a5c-acc2-ea5b26e92326][Build your own react]]
+* JavaScript
+** [[id:cc2b98c6-21d9-488c-9a05-8485a36c1e01][JavaScript Proxy And Reflect]]
+** [[id:ff2d55a2-ae96-4144-866a-1c7bbe5bf9ef][JavaScript Weekly]]
+** [[id:44f588fc-94b5-4d3d-ae87-7a60366972cb][JavaScript Confusable Collections]]
+** [[id:1626d6f0-b158-4478-81cb-c9eefdd87a6f][JavaScript Web Component]]
+** [[id:BB6665DD-66EE-42BD-8E52-C4A30D29A4B6][ES6 Promise]]
+* Node.js
+* Shell Programming
+** [[id:1a7e98ba-a7f1-4758-b3a0-6ee1e148a61d][sed command]]
+** [[id:a10d6fd1-893b-4ed4-967d-d57388ba6525][shell basis]]
+* 怪谈杂物间
+** [[id:95666e03-38b5-4ad4-b50f-ef40f6cc36d8][collections]]
+** [[id:93914fa7-93b9-464c-8e6d-98fb5107966d][incurable deseases]]
+** [[id:acb1ce02-6444-4b0e-a61d-7091dbe05d92][Let's talking here]]
+** [[id:fc444cea-b33d-401c-b514-7d78cec8f90f][my plans]]
+** [[id:aa445529-4f0e-48d8-833f-12c149603ca6][Documentations]]
+
+* COMMENT Local Variables :ARCHIVE:
+# Local Variables: after-save-hook: gcl/org-html-export-to-html End:
