@@ -18,18 +18,15 @@ const props = withDefaults(
 
 const hasChild = computed(() => props.data.children?.length > 0)
 
-onMounted(() => {
-  console.log(props.data, 'org text node')
-})
 </script>
 
 <template>
   <span v-if="hasChild">
-    <span v-for="(child, i) in data.children" :key="i">
+    <template v-for="(child, i) in data.children" :key="i">
       <component :is="components()[child.type]" :data="child" />
-    </span>
+    </template>
   </span>
-  <span v-else-if="data.content">{{ data.content }}</span>
+  <template v-else-if="data.content">{{ data.content }}</template>
 </template>
 
 <style lang="scss" scoped></style>

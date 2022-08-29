@@ -20,7 +20,6 @@ const props = withDefaults(
 
 onMounted(() => {
   changeTheme(config.defaultThemeName)
-  console.log(props.data, '1000')
 })
 
 // theme exchange
