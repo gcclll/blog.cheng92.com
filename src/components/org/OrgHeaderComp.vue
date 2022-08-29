@@ -25,7 +25,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <component :class="twCss[tagName]" :is="tagName"
+  <component :class="[`text-${5 - data.level}xl text-teal-600`]" :is="tagName"
     ><template v-if="typeof data.title === 'string'">{{ data.title }}</template
     ><OrgTextComp v-else :data="data.title"
   /></component>

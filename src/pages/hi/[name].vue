@@ -10,16 +10,16 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
+   <div>
     <div text-4xl>
       <div i-carbon-pedestrian inline-block />
     </div>
     <p>
       {{ t('intro.hi', { name: props.name }) }}
-    </p>
+     </p>
 
-    <p text-sm opacity-75>
-      <em>{{ t('intro.dynamic-route') }}</em>
+     <p text-sm opacity-75>
+       <em>{{ t('intro.dynamic-route') }}</em>
     </p>
 
     <template v-if="user.otherNames.length">
