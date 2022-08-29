@@ -18,23 +18,6 @@ const props = withDefaults(
   },
 )
 
-onMounted(() => {
-  changeTheme(config.defaultThemeName)
-})
-
-// theme exchange
-function changeTheme(name?: string) {
-  const html = document.querySelector('html')
-  let value: string
-  if (html) {
-    const theme = html.getAttribute('data-theme')
-    if (name) value = name
-    else value = theme === 'dark' ? 'light' : 'dark'
-
-    html.setAttribute('data-theme', value)
-  }
-}
-
 // copy button
 const showCopyButton = ref(false)
 const codeRef = ref(null)
@@ -65,7 +48,7 @@ function alert() {}
       <v-btn class="ma-2 pa-2" @click="alert('success', 'test message')"
         >Alert</v-btn
       >
-      <v-btn class="ma-2 pa-2" @click="changeTheme()">改变主题</v-btn>
+      <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn>
       <v-btn
         class="ma-2 pa-2 gl-block__copy-button"
         v-if="showCopyButton"

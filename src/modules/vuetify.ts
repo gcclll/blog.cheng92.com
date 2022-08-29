@@ -8,7 +8,12 @@ import { createVuetify } from 'vuetify'
 import { type UserModule } from '~/types'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
-const vuetify = createVuetify()
+const vuetify = createVuetify({
+  // https://next.vuetifyjs.com/en/features/theme/
+  theme: {
+    defaultTheme: 'light',
+  },
+})
 
 /**
  * plugins/webfontloader.js

@@ -2,7 +2,7 @@
 import twCss from '~/json'
 import { type OrgHeaderNode, OrgNodeTypes } from '~/utils/parser'
 
-const props = withDefaults(
+ const props = withDefaults(
   defineProps<{
     data: OrgHeaderNode
   }>(),

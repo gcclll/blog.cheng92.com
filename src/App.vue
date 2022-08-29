@@ -8,16 +8,25 @@ useHead({
     { name: 'description', content: 'Opinionated Vite Starter Template' },
     {
       name: 'theme-color',
-      content: computed(() => isDark.value ? '#00aba9' : '#ffffff'),
+      content: computed(() => (isDark.value ? '#00aba9' : '#ffffff')),
     },
   ],
   link: [
     {
       rel: 'icon',
       type: 'image/svg+xml',
-      href: computed(() => preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg'),
+      href: computed(() =>
+        preferredDark.value ? '/favicon-dark.svg' : '/favicon.svg',
+      ),
     },
   ],
+})
+
+let html: HTMLHtmlElement | undefined
+watchEffect(() => {
+  if (!html) html = document.querySelector('html')
+
+  html?.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
 })
 </script>
 
