@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { type OrgBlockNode, OrgNodeTypes } from '~/utils/parser'
+import config from '~/json/config'
 
 const props = withDefaults(
   defineProps<{
@@ -18,16 +19,20 @@ const props = withDefaults(
 )
 
 onMounted(() => {
-  changeTheme()
+  changeTheme(config.defaultThemeName)
   console.log(props.data, '1000')
 })
 
 // theme exchange
-function changeTheme() {
+function changeTheme(name?: string) {
   const html = document.querySelector('html')
+  let value: string
   if (html) {
     const theme = html.getAttribute('data-theme')
-    html.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark')
+    if (name) value = name
+    else value = theme === 'dark' ? 'light' : 'dark'
+
+    html.setAttribute('data-theme', value)
   }
 }
 
@@ -61,7 +66,7 @@ function alert() {}
       <v-btn class="ma-2 pa-2" @click="alert('success', 'test message')"
         >Alert</v-btn
       >
-      <v-btn class="ma-2 pa-2" @click="changeTheme">改变主题</v-btn>
+      <v-btn class="ma-2 pa-2" @click="changeTheme()">改变主题</v-btn>
       <v-btn
         class="ma-2 pa-2 gl-block__copy-button"
         v-if="showCopyButton"

@@ -44,7 +44,7 @@ watch(
       :data="{ type: OrgNodeTypes.HEADER, content: properties.title, level: 1 }"
     />
     <div v-for="(node, i) in nodeList" :key="i" class="org-content-item">
-      <component :is="components[node.type]" :data="node" />
+      <component :is="components()[node.type]" :data="node" />
     </div>
   </div>
 </template>

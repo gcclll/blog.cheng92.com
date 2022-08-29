@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     OrgContent: typeof import('./components/org/OrgContent.vue')['default']
     OrgContentComp: typeof import('./components/org/OrgContentComp.vue')['default']
     OrgHeaderComp: typeof import('./components/org/OrgHeaderComp.vue')['default']
+    OrgTextComp: typeof import('./components/org/OrgTextComp.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
