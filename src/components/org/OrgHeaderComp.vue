@@ -20,7 +20,7 @@ const props = withDefaults(
 const tagName = computed(() => `h${props.data.level}`)
 
 onUpdated(() => {
-  console.log(twCss, 'org header node')
+  console.log(props.data, 'org header node')
 })
 </script>
 

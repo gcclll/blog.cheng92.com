@@ -34,7 +34,6 @@ export function useCopyButton(
   }
 
   const showButton = (show: boolean) => {
-    console.log({ show })
     copyButtonVisible.value = !!show
   }
 
