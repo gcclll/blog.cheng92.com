@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     OrgBlockComp: typeof import('./components/org/OrgBlockComp.vue')['default']
     OrgContent: typeof import('./components/org/OrgContent.vue')['default']
     OrgContentComp: typeof import('./components/org/OrgContentComp.vue')['default']
+    OrgEmphasisComp: typeof import('./components/org/OrgEmphasisComp.vue')['default']
     OrgHeaderComp: typeof import('./components/org/OrgHeaderComp.vue')['default']
     OrgSubSupComp: typeof import('./components/org/OrgSubSupComp.vue')['default']
     OrgTableComp: typeof import('./components/org/OrgTableComp.vue')['default']
