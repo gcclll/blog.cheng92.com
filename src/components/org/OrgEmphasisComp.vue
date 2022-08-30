@@ -8,6 +8,7 @@ const props = withDefaults(
     data: {
       type: OrgNodeTypes.EMPHASIS,
       sign: '',
+      children: [],
     },
   },
 )
@@ -28,7 +29,10 @@ onUpdated(() => {
 </script>
 
 <template>
-  <span :class="nodeClsName">{{ data.content }}</span>
+  <span :class="nodeClsName"
+    ><template v-for="(child, i) in data.children" :key="i"
+      ><OrgTextComp :data="child" /></template
+  ></span>
 </template>
 
 <style lang="scss" scoped></style>
