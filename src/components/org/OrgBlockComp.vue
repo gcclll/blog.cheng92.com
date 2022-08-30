@@ -33,6 +33,7 @@ function alert() {}
       <v-btn
         v-if="copyButtonVisible"
         class="ma-2 pa-2 gl-block__copy-button"
+        size="small"
         @click="copy"
       >
         复 制
@@ -43,7 +44,7 @@ function alert() {}
       :language="data.lang"
       :code="data.code"
       @mouseenter="showButton(true)"
-      @mouseleave="showButton(false)"
+      @mouseleave="showButton(true)"
     />
   </div>
 </template>

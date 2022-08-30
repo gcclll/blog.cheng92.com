@@ -23,13 +23,16 @@ useHead({
 })
 
 let html: HTMLHtmlElement | undefined
+const theme = computed(() => (isDark.value ? 'dark' : 'light'))
 watchEffect(() => {
   if (!html) html = document.querySelector('html')
 
-  html?.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
+  html?.setAttribute('data-theme', theme.value)
 })
 </script>
 
 <template>
-  <RouterView />
+  <v-app :theme="theme">
+    <RouterView />
+  </v-app>
 </template>
