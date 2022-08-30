@@ -58,11 +58,4 @@ onMounted(() => {
 .org-source :deep(.v-field__input) {
   height: 70vh;
 }
-
-.org-content {
-  background-color: #eee;
-}
-::-webkit-scrollbar {
-  /* width: 0; */
-}
 </style>

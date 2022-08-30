@@ -4,6 +4,8 @@ import OrgTextComp from './OrgTextComp.vue'
 import OrgTableComp from './OrgTableComp.vue'
 import OrgSubSupComp from './OrgSubSupComp.vue'
 import OrgEmphasisComp from './OrgEmphasisComp.vue'
+import OrgStateWordComp from './OrgStateWordComp.vue'
+import OrgColorTextComp from './OrgColorTextComp.vue'
 
 import { OrgNodeTypes } from '~/utils/parser'
 
@@ -14,4 +16,6 @@ export const components = () => ({
   [OrgNodeTypes.TABLE]: OrgTableComp,
   [OrgNodeTypes.SUB_SUP]: OrgSubSupComp,
   [OrgNodeTypes.EMPHASIS]: OrgEmphasisComp,
+  [OrgNodeTypes.STATE]: OrgStateWordComp,
+  [OrgNodeTypes.COLORFUL_TEXT]: OrgColorTextComp,
 })

@@ -27,6 +27,11 @@ export default defineConfig({
     Vue({
       include: [/\.vue$/, /\.md$/],
       reactivityTransform: true,
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag: string) => ['font'].includes(tag),
+        },
+      },
     }),
 
     Vuetify({ autoImport: true }),
