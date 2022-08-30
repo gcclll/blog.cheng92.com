@@ -2,7 +2,7 @@
 import twCss from '~/json'
 import { type OrgHeaderNode, OrgNodeTypes } from '~/utils/parser'
 
- const props = withDefaults(
+const props = withDefaults(
   defineProps<{
     data: OrgHeaderNode
   }>(),
@@ -25,7 +25,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <component :class="[`text-${5 - data.level}xl text-teal-600`]" :is="tagName"
+  <component :is="tagName" :class="twCss.hn(data.level)"
     ><template v-if="typeof data.title === 'string'">{{ data.title }}</template
     ><OrgTextComp v-else :data="data.title"
   /></component>

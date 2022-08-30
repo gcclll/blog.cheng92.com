@@ -14,6 +14,7 @@ specifiers:
   '@vueuse/head': ^0.7.9
   autoprefixer: ^10.4.8
   axios: ^0.27.2
+  classnames: ^2.3.1
   critters: ^0.0.16
   cross-env: ^7.0.3
   cypress: ^10.4.0
@@ -61,6 +62,7 @@ dependencies:
   '@vueuse/core': 9.1.0_vue@3.2.37
   '@vueuse/head': 0.7.9_vue@3.2.37
   axios: 0.27.2
+  classnames: 2.3.1
   highlight.js: 11.6.0
   nprogress: 0.2.0
   org-file-parser-with-js: 0.1.33
@@ -2986,6 +2988,10 @@ packages:
   /ci-info/3.3.2:
     resolution: {integrity: sha512-xmDt/QIAdeZ9+nfdPsaBCpMvHNLFiLdjj59qjqn+6iPe6YmHGQ35sBnQ8uslRBXFmXkiZQOJRjvQeoGppoTjjg==}
     dev: true
+
+  /classnames/2.3.1:
+    resolution: {integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==}
+    dev: false
 
   /clean-css/4.2.4:
     resolution: {integrity: sha512-EJUDT7nDVFDvaQgAo2G/PJvxmp1o/c6iXLbswsBbUFXi1Nr+AjA2cKmfbKDMjMvzEe75g3P6JkaDDAKk96A85A==}
