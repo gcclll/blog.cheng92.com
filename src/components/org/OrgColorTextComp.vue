@@ -18,7 +18,7 @@ const props = withDefaults(
 
 <template>
   <font v-if="data.children?.length === 0" :color="data.color">{{
-    ` ${data.content.trim()} `
+    `${data.content.trim()} `
   }}</font>
   <OrgTextComp
     v-else
