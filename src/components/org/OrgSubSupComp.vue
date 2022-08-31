@@ -21,7 +21,7 @@ const props = withDefaults(
     >{{ data.target
     }}<component :is="data.sup ? 'sup' : 'sub'"
       ><OrgTextComp :data="data.value" /></component
-    >&nbsp;</span
+    ></span
   >
 </template>
 

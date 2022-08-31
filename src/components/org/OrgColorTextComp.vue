@@ -18,12 +18,12 @@ const props = withDefaults(
 
 <template>
   <font v-if="data.children?.length === 0" :color="data.color">{{
-    data.content
+    ` ${data.content.trim()} `
   }}</font>
   <OrgTextComp
     v-else
     :data="{ type: OrgNodeTypes.TEXT, children: data.children }"
-  />&nbsp;
+  />
 </template>
 
 <style lang="scss" scoped></style>
