@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import twCss from '~/json'
 import { type OrgHeaderNode, OrgNodeTypes } from '~/utils/parser'
+
+const [classList] = useClassNames()
 
 const props = withDefaults(
   defineProps<{
@@ -25,7 +26,7 @@ onUpdated(() => {
 </script>
 
 <template>
-  <component :is="tagName" :class="twCss.hn(data.level)"
+  <component :is="tagName" :class="classList.header(data.level)"
     ><template v-if="typeof data.title === 'string'">{{ data.title }}</template
     ><OrgTextComp v-else :data="data.title"
   /></component>

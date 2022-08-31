@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import twCss from '~/json/'
 import { OrgNodeTypes, type OrgStateNode } from '~/utils/parser'
+
+const [classList] = useClassNames()
 
 const props = withDefaults(
   defineProps<{
@@ -14,7 +15,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <span class="rounded px-2" :class="[twCss.states(data.state)]">{{
+  <span class="rounded px-2" :class="[classList.states(data.state)]">{{
     data.state
   }}</span>
 </template>
