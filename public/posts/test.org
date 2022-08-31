@@ -29,7 +29,7 @@ Emacs Lisp:
 
 <red:text1 text2>
 
-i should red:text1 green:text between texts.
+#ccc:i #666666:should red:text1 green:text cyan:between yellow:texts.
 
 ** Awesome font family
 
