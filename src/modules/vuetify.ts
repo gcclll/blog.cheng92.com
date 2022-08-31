@@ -33,8 +33,9 @@ async function loadFonts() {
   })
 }
 
-loadFonts()
+export const install: UserModule = ({ isClient, app }) => {
+  if (!isClient) return
 
-export const install: UserModule = ({ app }) => {
+  loadFonts()
   app.use(vuetify)
 }
