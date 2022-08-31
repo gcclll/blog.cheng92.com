@@ -3,6 +3,8 @@
 import { components } from './'
 import { OrgNodeTypes } from '~/utils/parser'
 
+const [classList] = useClassNames()
+
 const props = withDefaults(
   defineProps<{
     nodes: Array<{
@@ -37,7 +39,7 @@ watch(
 </script>
 
 <template>
-  <div class="org-content">
+  <div :class="classList.orgContent">
     <OrgHeaderComp
       class="text-center"
       style="display: block"

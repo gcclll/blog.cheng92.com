@@ -58,6 +58,7 @@ function alert() {}
      right: 0;
      top: 2px;
      z-index: 99;
+     line-height: 0.5;
    }
  }
 </style>
