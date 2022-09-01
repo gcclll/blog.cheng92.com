@@ -13,15 +13,24 @@ const props = withDefaults(
   },
 )
 
-const nodeClsName = computed(
-  () =>
-    ({
-      _: 'underline',
-      '/': 'italic',
-      '*': 'font-bold',
-      '+': 'line-through',
-    }[props.data?.sign] || ''),
-)
+const nodeClsName = computed(() => {
+  const { sign = '', extra } = props.data || {}
+  let styles = {
+    _: 'underline',
+    '/': 'italic',
+    '*': 'font-bold',
+    '+': 'line-through',
+  }
+
+  if (extra) {
+    const common = 'text-3xl'
+    styles = {
+
+    }
+  }
+
+  return styles[sign]
+})
 
 onUpdated(() => {
   console.log(props.data, 'org emphasis node')
