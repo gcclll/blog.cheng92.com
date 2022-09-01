@@ -1,5 +1,5 @@
 export default {
-  header: (level: number) => [`text-${5 - level}xl`, 'text-teal-600'],
+  header: (level: number) => [`text-${5 - level}xl`, 'text-teal-600', 'pb-5'],
   states: (word: string) =>
     ({
       TODO: 'bg-red-600 text-white',

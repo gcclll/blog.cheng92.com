@@ -51,14 +51,14 @@ function alert() {}
 </template>
 
 <style lang="scss" scoped>
- .gl-block-node {
-   position: relative;
-   .gl-block__copy-button {
-     position: absolute;
-     right: 0;
-     top: 2px;
-     z-index: 99;
-     line-height: 0.5;
-   }
- }
+.gl-block-node {
+  position: relative;
+  .gl-block__copy-button {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    z-index: 99;
+    line-height: 0.5;
+  }
+}
 </style>
