@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { type OrgEmphasisNode, OrgNodeTypes } from '~/utils/parser'
+
 const props = withDefaults(
   defineProps<{
     data: OrgEmphasisNode
@@ -13,6 +14,7 @@ const props = withDefaults(
   },
 )
 
+const [classList] = useClassNames()
 const nodeClsName = computed(() => {
   const { sign = '', extra } = props.data || {}
   let styles = {
@@ -23,11 +25,9 @@ const nodeClsName = computed(() => {
   }
 
   if (extra) {
-    const common = 'text-3xl'
-    styles = {
-
-    }
+    styles = classList.orgExtraTags
   }
+  console.log({ extra, sign })
 
   return styles[sign]
 })

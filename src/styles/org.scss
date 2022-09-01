@@ -6,37 +6,3 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   @include meta.load-css("highlight.js/styles/github-dark");
 }
-
-@mixin gl-self-define-emphasis($name, $family, $weight, $color, $bgcolor, $underline: none) {
-  .gl-text-emphasis-#{$name} {
-    font-family: $family;
-    font-stretch: normal;
-    font-size: 22pt;
-    font-weight: nil;
-    font-style: normal;
-    color: $color;
-    background: $bgcolor;
-    text-decoration: $underline
-  }
-}
-
-// "!!,!@,!%,!&,@!,@@,@%,@&,%!,%@,%%,%&,&!,&@,&%,&&"
-@include gl-self-define-emphasis("01", "CherryBomb", 700, #a53e2d, #fff8ca);
-@include gl-self-define-emphasis("02", "Eater", nil, #eeb97e, #fff8ca);
-@include gl-self-define-emphasis("03", "Diplomata", 700, #683231, #fff8ca);
-@include gl-self-define-emphasis("04", "Linux Biolinum Keyboard", 700, #353d8b, #fff8ca);
-
-@include gl-self-define-emphasis("05", "Finger Paint", 700, #54436e, #fff8ca);
-@include gl-self-define-emphasis("06", "Fuzzy Bubbles", 700, #d65d8f, #fff8ca);
-@include gl-self-define-emphasis("07", "Gloria Hallelujah", 700, #e5c494, #fff8ca);
-@include gl-self-define-emphasis("08", "Henny Penny", 700, #0b9fcf, #fff8ca);
-
-@include gl-self-define-emphasis("09", "Humor Sans", 700, #c9564c, #fff8ca);
-@include gl-self-define-emphasis("10", "Monaco", nil, #00ce00, #fff8ca);
-@include gl-self-define-emphasis("11", "Monaco", nil, #00ce00, #fff8ca);
-@include gl-self-define-emphasis("12", "Monaco", nil, #00ce00, #fff8ca);
-
-@include gl-self-define-emphasis("13", "Monaco", nil, #00ce00, #fff8ca);
-@include gl-self-define-emphasis("14", "Monaco", nil, #00ce00, #fff8ca);
-@include gl-self-define-emphasis("15", "Monaco", nil, #00ce00, #fff8ca);
-@include gl-self-define-emphasis("16", "Monaco", nil, #00ce00, #fff8ca);

@@ -25,7 +25,7 @@ specifiers:
   markdown-it-link-attributes: ^4.0.0
   markdown-it-shiki: ^0.5.1
   nprogress: ^0.2.0
-  org-file-parser-with-js: ^0.1.40
+  org-file-parser-with-js: ^0.1.41
   pinia: ^2.0.17
   pnpm: ^7.8.0
   postcss: ^8.4.16
@@ -65,7 +65,7 @@ dependencies:
   classnames: 2.3.1
   highlight.js: 11.6.0
   nprogress: 0.2.0
-  org-file-parser-with-js: 0.1.40
+  org-file-parser-with-js: 0.1.41
   pinia: 2.0.17_j6bzmzd4ujpabbp5objtwxyjp4
   roboto-fontface: 0.10.0
   vue: 3.2.37
@@ -6390,8 +6390,8 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /org-file-parser-with-js/0.1.40:
-    resolution: {integrity: sha512-RPZD+ydKsBsH9SsT/gEZmUun7yfiDND5vvEuQXY8Q048LX5rKIQT0gj+2sJ4VDj/ouEMeN8ZC7ssDTJf5IComg==}
+  /org-file-parser-with-js/0.1.41:
+    resolution: {integrity: sha512-Ckahrr3duIQrtowdVBSUl/cSLujSFcHU6x7cArvjig5MD7fg0j+2Sw/MFt4k4g9ajowlHvlgpVam50vfKlEDqg==}
     engines: {node: '>=10'}
     dev: false
 
