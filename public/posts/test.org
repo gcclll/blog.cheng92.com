@@ -100,7 +100,7 @@ test box
 
 suptext^sup xxxx text subtext_sub jjjjkkkj
 
-* TODO header1^{sup}  xx_{sub} :tag1:tag2:
+* TODO header1^{sup}  xx_{sub} :tag1:tag2:emacs:vue:react:
 DEADLINE: <2022-07-06 Wed>
 :PROPERTIES:
 :STYLE: .test{color:red}

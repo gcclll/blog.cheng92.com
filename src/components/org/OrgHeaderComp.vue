@@ -19,6 +19,7 @@ const props = withDefaults(
 )
 
 const tagName = computed(() => `h${props.data.level}`)
+const [tagClsNames, tagChipColor, tagColors] = classList.tag
 
 onUpdated(() => {
   console.log(props.data, 'org header node')
@@ -26,10 +27,26 @@ onUpdated(() => {
 </script>
 
 <template>
-  <component :is="tagName" :class="classList.header(data.level)"
-    ><template v-if="typeof data.title === 'string'">{{ data.title }}</template
-    ><OrgTextComp v-else :data="data.title"
-  /></component>
+  <div class="relative pb-5">
+    <component :is="tagName" :class="classList.header(data.level)"
+      ><template v-if="typeof data.title === 'string'">{{
+        data.title
+      }}</template
+      ><OrgTextComp v-else :data="data.title"
+    /></component>
+    <span
+      ><v-chip
+        v-for="(tag, i) in data.tags"
+         :key="i"
+         size="x-small"
+        :class="tagClsNames"
+        :color="tagColors[tag] || tagChipColor"
+        label
+        text-color="white"
+        >{{ tag }}</v-chip
+      ></span
+    >
+  </div>
 </template>
 
 <style lang="scss" scoped></style>
