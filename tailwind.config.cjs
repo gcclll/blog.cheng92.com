@@ -9,6 +9,7 @@ const fontFamily = {
   humor: ['Humor Sans'],
   diplo: ['Diplomata'],
   monaco: ['Monaco'],
+  bitstm: ['Bitstream Vera Sans Mono']
 }
 
 Object.keys(fontFamily).forEach((font) => {

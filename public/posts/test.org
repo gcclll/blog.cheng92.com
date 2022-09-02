@@ -31,9 +31,10 @@ Emacs Lisp:
 
 #ccc:i #666666:should red:text1 green:text cyan:between yellow:texts.
 
-** Awesome font family
+** CANCELLED Awesome font family
+CLOSED: [2022-09-02 Fri 09:49]
 
-You can self-define any style text.
+You can self-define any style.
 
 !!xxx!! !@xxx!@ !%xxx!% !&xxx!&
 
