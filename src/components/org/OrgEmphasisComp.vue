@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { type OrgEmphasisNode, OrgNodeTypes } from '~/utils/parser'
+import config from '~/json/config'
 
 const props = withDefaults(
   defineProps<{
@@ -16,24 +17,24 @@ const props = withDefaults(
 
 const [classList] = useClassNames()
 const nodeClsName = computed(() => {
-  const { sign = '', extra } = props.data || {}
+  const { sign = '', extra, background } = props.data || {}
   let styles = {
-    _: 'underline',
+    '_': 'underline',
     '/': 'italic',
     '*': 'font-bold',
     '+': 'line-through',
   }
 
-  if (extra) {
-    styles = classList.orgExtraTags
-  }
-  console.log({ extra, sign })
+  if (extra) styles = classList.orgExtraTags
 
-  return styles[sign]
-})
+  const bgCss =
+    background === true
+      ? config.extraBackground
+      : typeof background === 'string'
+      ? background
+      : ''
 
-onUpdated(() => {
-  console.log(props.data, 'org emphasis node')
+  return [bgCss, styles[sign], useClassNames('space')].filter(Boolean)
 })
 </script>
 

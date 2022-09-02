@@ -17,12 +17,12 @@ const props = withDefaults(
 </script>
 
 <template>
-  <span
+  <span :class="useClassNames('space')"
     >{{ data.target
-    }}<component :is="data.sup ? 'sup' : 'sub'"
-      ><OrgTextComp :data="data.value" /></component
-    ></span
-  >
+    }}<component :is="data.sup ? 'sup' : 'sub'">
+      <span v-if="typeof data.value === 'string'">{{ data.value }}</span>
+      <OrgTextComp v-else :data="data.value" /></component
+  ></span>
 </template>
 
 <style lang="scss" scoped></style>

@@ -36,6 +36,10 @@ watch(
     immediate: true,
   },
 )
+
+onUpdated(() => {
+  console.log(props.nodes, 'xxx')
+})
 </script>
 
 <template>

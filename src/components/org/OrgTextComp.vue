@@ -17,16 +17,19 @@ const props = withDefaults(
 )
 
 const hasChild = computed(() => props.data.children?.length > 0)
-
 </script>
 
 <template>
-  <span v-if="hasChild">
-    <template v-for="(child, i) in data.children" :key="i">
-      <component :is="components()[child.type]" :data="child" />
-    </template>
+  <span :class="useClassNames('space')">
+    <span v-if="hasChild">
+      <template v-for="(child, i) in data.children" :key="i">
+        <component :is="components()[child.type]" :data="child" />
+      </template>
+    </span>
+    <span v-else-if="data.content">{{
+      data.content.trim()
+    }}</span>
   </span>
-  <template v-else-if="data.content">{{ data.content }}</template>
 </template>
 
 <style lang="scss" scoped></style>

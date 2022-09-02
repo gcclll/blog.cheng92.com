@@ -21,9 +21,6 @@ const props = withDefaults(
 const tagName = computed(() => `h${props.data.level}`)
 const [tagClsNames, tagChipColor, tagColors] = classList.tag
 
-onUpdated(() => {
-  console.log(props.data, 'org header node')
-})
 </script>
 
 <template>

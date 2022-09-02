@@ -1,3 +1,4 @@
 {
-  "defaultThemeName": "light"
+  "defaultThemeName": "light",
+  "extraBackground": "bg-[#fff8ca]"
 }

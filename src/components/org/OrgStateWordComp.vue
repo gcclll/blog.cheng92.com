@@ -15,7 +15,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <span :class="[classList.states(data.state)]">{{
+  <span :class="[classList.states(data.state), classList.space]">{{
     data.state
   }}</span>
 </template>

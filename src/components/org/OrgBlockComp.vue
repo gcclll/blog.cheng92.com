@@ -19,16 +19,24 @@ const props = withDefaults(
 )
 
 const [codeRef, copyButtonVisible, copy, showButton] = useCopyButton()
+const isCard = computed(() => {
+  const { code, name } = props.data
+  return (
+    typeof code === 'object' &&
+    code.type === OrgNodeTypes.TEXT &&
+    name === 'textbox'
+  )
+})
 
-function alert() {}
+onMounted(() => {
+  console.log(props.data, 'xxx')
+})
 </script>
 
 <template>
-  <v-btn class="ma-2 pa-2" @click="alert('success', 'test message')"
-    >Alert</v-btn
-  >
   <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn>
-  <div class="gl-block-node">
+  <v-card v-if="isCard"><OrgTextComp :data="data.code" /></v-card>
+  <div v-else class="gl-block-node">
     <p class="d-flex flex-row">
       <v-btn
         v-if="copyButtonVisible"
