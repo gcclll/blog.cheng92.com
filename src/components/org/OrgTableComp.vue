@@ -34,7 +34,7 @@ onUpdated(() => {
         <tr v-for="(node, i) in data.nodes" :key="i">
           <td v-for="val in columns" :key="val">{{ node[val - 1] }}</td>
         </tr>
-.      </tbody>
+      </tbody>
     </v-table>
   </div>
 </template>

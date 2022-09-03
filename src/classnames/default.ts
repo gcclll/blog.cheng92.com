@@ -1,6 +1,6 @@
 export default {
   space: ['pr-1'], // 文字之间的间隔
-  header: (level: number) => [`text-${5 - level}xl`, 'text-teal-600'],
+  header: (level: number) => [`text-${5 - level}xl`, 'text-teal-600', 'align-middle'],
   states: (word: string) =>
     ({
       TODO: 'bg-red-600 text-white rounded px-[5px]',
@@ -29,4 +29,6 @@ export default {
     '&%': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
     '&&': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
   },
+  ol: 'list-decimal ml-4',
+  ul: 'list-disc ml-4',
 }

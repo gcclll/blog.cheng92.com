@@ -14,6 +14,8 @@ declare module '@vue/runtime-core' {
     OrgContentComp: typeof import('./components/org/OrgContentComp.vue')['default']
     OrgEmphasisComp: typeof import('./components/org/OrgEmphasisComp.vue')['default']
     OrgHeaderComp: typeof import('./components/org/OrgHeaderComp.vue')['default']
+    OrgListComp: typeof import('./components/org/OrgListComp.vue')['default']
+    OrgMaybeComp: typeof import('./components/org/OrgMaybeComp.vue')['default']
     OrgStateWordComp: typeof import('./components/org/OrgStateWordComp.vue')['default']
     OrgSubSupComp: typeof import('./components/org/OrgSubSupComp.vue')['default']
     OrgTableComp: typeof import('./components/org/OrgTableComp.vue')['default']
