@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     OrgBlockComp: typeof import('./components/org/OrgBlockComp.vue')['default']
     OrgColorTextComp: typeof import('./components/org/OrgColorTextComp.vue')['default']
     OrgContentComp: typeof import('./components/org/OrgContentComp.vue')['default']
+    OrgDocComp: typeof import('./components/org/OrgDocComp.vue')['default']
     OrgEmphasisComp: typeof import('./components/org/OrgEmphasisComp.vue')['default']
     OrgHeaderComp: typeof import('./components/org/OrgHeaderComp.vue')['default']
     OrgListComp: typeof import('./components/org/OrgListComp.vue')['default']

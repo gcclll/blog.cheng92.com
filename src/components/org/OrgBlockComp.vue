@@ -40,7 +40,7 @@ onMounted(() => {
   <div v-else class="gl-block-node relative">
     <p class="flex flex-row absolute right-0 top-0 z-99 h-8 pt-2">
       <span class="text-pink-600 mr-2">{{data.lang}}</span>
-      <span class="mr-2 cursor-pointer" @click="copy">复 制</span>
+      <span class="mr-2 cursor-pointer text-red-400" @click="copy">copy</span>
     </p>
     <highlightjs
       ref="codeRef"

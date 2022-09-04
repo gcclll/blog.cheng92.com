@@ -12,3 +12,8 @@ intro:
   aka: Also known as
   whats-your-name: What's your name?
 not-found: Not found
+keywords:
+  author: Author
+  published: Publised At
+  updated: Updated At
+  email: E-Mail

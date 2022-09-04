@@ -17,7 +17,12 @@ const props = withDefaults(
 </script>
 
 <template>
-  <span :class="useClassNames('space')">
+  <OrgDocComp
+    v-if="data.color === 'doc'"
+    :doc-name="data.color"
+    :content="data.content"
+  />
+  <span v-else :class="useClassNames('space')">
     <font v-if="data.children?.length === 0" :color="data.color">{{
       `${data.content.trim()}`
     }}</font>
