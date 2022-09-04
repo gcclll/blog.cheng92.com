@@ -18,7 +18,7 @@ const props = withDefaults(
   },
 )
 
-const [codeRef, copyButtonVisible, copy, showButton] = useCopyButton()
+const [codeRef, , copy, showButton] = useCopyButton()
 const isCard = computed(() => {
   const { code, name } = props.data
   return (
@@ -28,6 +28,7 @@ const isCard = computed(() => {
   )
 })
 
+const isDark = useDark()
 onMounted(() => {
   console.log(props.data, 'xxx')
 })
@@ -36,17 +37,10 @@ onMounted(() => {
 <template>
   <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn>
   <v-card v-if="isCard"><OrgTextComp :data="data.code" /></v-card>
-  <div v-else class="gl-block-node">
-    <p class="d-flex flex-row">
-      <v-btn
-        v-if="copyButtonVisible"
-        class="ma-2 pa-2 gl-block__copy-button leading-[0.5rem]"
-        size="x-small"
-        color="secondary"
-        @click="copy"
-      >
-        复 制
-      </v-btn>
+  <div v-else class="gl-block-node relative">
+    <p class="flex flex-row absolute right-0 top-0 z-99 h-8 pt-2">
+      <span class="text-pink-600 mr-2">{{data.lang}}</span>
+      <span class="mr-2 cursor-pointer" @click="copy">复 制</span>
     </p>
     <highlightjs
       ref="codeRef"
@@ -59,14 +53,4 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.gl-block-node {
-  position: relative;
-  .gl-block__copy-button {
-    position: absolute;
-    right: 0;
-    top: 2px;
-    z-index: 99;
-    line-height: 0.5;
-  }
-}
 </style>

@@ -25,12 +25,15 @@ onMounted(() => {
     source.value = res.data
   })
 })
+
+const showEditor = ref(false)
+const [classList] = useClassNames()
 </script>
 
 <template>
   <div>
     <h3 class="text-center">ORG -> HTML</h3>
-    <v-row no-gutters>
+    <v-row v-if="showEditor" no-gutters>
       <v-col cols="6">
         <v-card-text class="left">
           <v-textarea v-model="source" class="org-source" />
@@ -42,6 +45,9 @@ onMounted(() => {
         </v-card-text>
       </v-col>
     </v-row>
+    <v-card-text v-else :class="classList.content"
+      ><OrgContentComp :nodes="nodes.children"
+    /></v-card-text>
   </div>
 </template>
 
@@ -59,3 +65,8 @@ onMounted(() => {
   height: 70vh;
 }
 </style>
+
+<route lang="yaml">
+meta:
+  layout: blog
+</route>

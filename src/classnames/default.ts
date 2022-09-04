@@ -31,4 +31,5 @@ export default {
   },
   ol: 'list-decimal ml-4',
   ul: 'list-disc ml-4',
+  content: 'w-10/12 mx-auto',
 }
