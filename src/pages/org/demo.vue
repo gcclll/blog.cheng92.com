@@ -35,12 +35,12 @@ const [classList] = useClassNames()
     <h3 class="text-center">ORG -> HTML</h3>
     <v-row v-if="showEditor" no-gutters>
       <v-col cols="6">
-        <v-card-text class="left">
+        <v-card-text class="overflow-hidden">
           <v-textarea v-model="source" class="org-source" />
         </v-card-text>
       </v-col>
       <v-col cols="6">
-        <v-card-text class="org-content">
+        <v-card-text class="org-content h-[70vh] overflow-scroll">
           <OrgContentComp :nodes="nodes.children" />
         </v-card-text>
       </v-col>
@@ -52,15 +52,6 @@ const [classList] = useClassNames()
 </template>
 
 <style scoped>
-.v-card-text {
-  height: 70vh;
-  overflow: scroll;
-}
-
-.v-card-text.left {
-  overflow: hidden;
-}
-
 .org-source :deep(.v-field__input) {
   height: 70vh;
 }
