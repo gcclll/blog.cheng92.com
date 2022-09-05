@@ -7,7 +7,6 @@ export default {
       DONE: 'bg-gray-400 text-white rounded px-[5px]',
       CANCELLED: 'bg-[#d0c8c8] text-white rounded px-[5px]',
     }[word]),
-  orgContent: 'org-content bg-gray-100 dark:bg-gray-600 px-3 py-2',
   tag: ['mr-2', 'pink', { emacs: 'primary', vue: 'green', react: 'blue' }],
   // -> margin, font-family, weight, color, bg-color, underline
   // -> emacs org-special-block-extras
@@ -40,5 +39,7 @@ export default {
       'flex items-center justify-center space-x-4 text-[1rem] text-blue-600',
     // 文章标题
     chapterTitle: 'pt-4 pb-8 text-center block',
+    // 博客主体背景色
+    background: 'bg-gradient-to-b from-green-400 via-green-200 to-white dark:from-blue-400 dark:via-blue-200 dark:to-black',
   },
 }

@@ -29,10 +29,14 @@ watchEffect(() => {
 
   html?.setAttribute('data-theme', theme.value)
 })
+
+const [classList] = useClassNames()
 </script>
 
 <template>
-  <v-app :theme="theme">
-    <RouterView />
+  <v-app :class="classList.global.background">
+    <v-theme-provider :theme="theme" with-background>
+      <RouterView />
+    </v-theme-provider>
   </v-app>
 </template>

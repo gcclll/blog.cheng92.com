@@ -44,10 +44,7 @@ const [classList] = useClassNames()
         </v-card-text>
       </v-col>
     </v-row>
-    <v-card-text v-else :class="classList.content"
-      >
-      <OrgContentComp :nodes="nodes.children"
-    /></v-card-text>
+    <OrgContentComp v-else :nodes="nodes.children" />
   </div>
 </template>
 

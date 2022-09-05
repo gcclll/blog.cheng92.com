@@ -69,31 +69,35 @@ function showAttrIcon(name) {
 </script>
 
 <template>
-  <div :class="classList.orgContent">
-    <h1 :class="[classList.header(1), classList.global.chapterTitle]">
-      <p>{{ properties.title }}</p>
-      <p :class="classList.global.information">
-        <template v-for="(property, i) in chapterAttrs" :key="i">
-          <span :class="`meta-${property.name}`">
-            <v-icon v-if="showAttrIcon(property.name)" color="green darken-2">
-              {{ config.icons[property.name] }}
-            </v-icon>
-            <span v-else>{{ t(`keywords.${property.name}`) }}：</span>
-            <a
-              v-if="property.name === 'email'"
-              class="underline align-middle"
-              :href="`mailto:${property.value}`">
-              {{ property.value }}
-            </a>
-            <span v-else class="align-middle">{{ property.value }}</span>
-          </span>
-        </template>
-      </p>
-    </h1>
-    <div v-for="(node, i) in nodeList" :key="i" class="org-content-item">
-      <component :is="components()[node.type]" :data="node" />
-    </div>
-  </div>
+  <v-card :class="classList.content">
+    <v-card-text>
+      <div>
+        <h1 :class="[classList.header(1), classList.global.chapterTitle]">
+          <p>{{ properties.title }}</p>
+          <p :class="classList.global.information">
+            <template v-for="(property, i) in chapterAttrs" :key="i">
+              <span :class="`meta-${property.name}`">
+                <v-icon v-if="showAttrIcon(property.name)" color="green darken-2">
+                  {{ config.icons[property.name] }}
+                </v-icon>
+                <span v-else>{{ t(`keywords.${property.name}`) }}：</span>
+                <a
+                  v-if="property.name === 'email'"
+                  class="underline align-middle"
+                  :href="`mailto:${property.value}`">
+                  {{ property.value }}
+                </a>
+                <span v-else class="align-middle">{{ property.value }}</span>
+              </span>
+            </template>
+          </p>
+        </h1>
+        <div v-for="(node, i) in nodeList" :key="i" class="org-content-item">
+          <component :is="components()[node.type]" :data="node" />
+        </div>
+      </div>
+    </v-card-text>
+  </v-card>
 </template>
 
 <style lang="scss" scoped></style>
