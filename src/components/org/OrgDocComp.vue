@@ -16,10 +16,10 @@ const [classList] = useClassNames()
 <template>
   <v-tooltip v-model="visible" location="top" activator="parent">
     <template #activator>
-      <span :class="classList.docText" @click="visible = !visible">{{
-        docName
-      }}</span></template
-    >
+      <span :class="classList.docText" @click="visible = !visible">
+        {{ docName }}
+      </span>
+    </template>
     <AsyncDocComp v-bind="props" />
   </v-tooltip>
 </template>

@@ -23,13 +23,12 @@ const props = withDefaults(
     :content="data.content"
   />
   <span v-else :class="useClassNames('space')">
-    <font v-if="data.children?.length === 0" :color="data.color">{{
-      `${data.content.trim()}`
-    }}</font>
+    <font v-if="data.children?.length === 0" :color="data.color">
+      {{ `${data.content.trim()}` }}
+    </font>
     <OrgTextComp
       v-else
-      :data="{ type: OrgNodeTypes.TEXT, children: data.children }"
-    />
+      :data="{ type: OrgNodeTypes.TEXT, children: data.children }" />
   </span>
 </template>
 
