@@ -14,13 +14,19 @@ const [classList] = useClassNames()
 </script>
 
 <template>
-  <v-tooltip v-model="visible" location="top" activator="parent">
+  <v-tooltip v-model="visible" location="top" activator="parent" >
     <template #activator>
-      <span :class="classList.docText" @click="visible = !visible">
+      <span :class="classList.docText" @click.stop="visible = !visible">
         {{ docName }}
       </span>
     </template>
-    <AsyncDocComp v-bind="props" />
+
+    <v-card prepend-icon="mdi-note">
+      <template #title><h3>{{ content }}</h3></template>
+      <v-card-text>
+        <AsyncDocComp v-bind="props" />
+      </v-card-text>
+    </v-card>
   </v-tooltip>
 </template>
 
