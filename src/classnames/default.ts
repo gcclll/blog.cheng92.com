@@ -39,7 +39,7 @@ export default {
   // 针对文章全局通用样式
   global: {
     // 文章信息，在文章标题下方(如：EMail, Author, Publish, Updated 日期)
-    information: 'flex items-center space-x-4 md:flex-initial md:justify-center ise:flex-col ise:justify-start ise:space-x-0 text-[1rem] text-blue-600',
+    information: 'flex items-center justify-center space-x-4 text-[1rem] text-blue-600',
     // 文章标题
     chapterTitle: 'pt-4 pb-8 text-center block',
     // 博客主体背景色
