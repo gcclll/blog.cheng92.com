@@ -30,7 +30,11 @@ export default {
   },
   ol: 'list-decimal ml-4',
   ul: 'list-disc ml-4',
-  content: 'w-10/12 mx-auto max-w-[800px]',
+  // 内容区
+  content: {
+    card: 'w-10/12 mx-auto max-w-[800px]',
+    text: 'bg-gradient-to-b from-slate-300 via-slate-100 to-white dark:from-blue-400 dark:via-blue-200 dark:to-black'
+  },
   docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
   // 针对文章全局通用样式
   global: {
@@ -40,6 +44,7 @@ export default {
     // 文章标题
     chapterTitle: 'pt-4 pb-8 text-center block',
     // 博客主体背景色
-    background: 'bg-gradient-to-b from-green-400 via-green-200 to-white dark:from-blue-400 dark:via-blue-200 dark:to-black',
+    background:
+      'bg-gradient-to-b from-green-300 via-green-100 to-slate-200 dark:from-blue-400 dark:via-blue-200 dark:to-black',
   },
 }

@@ -69,8 +69,8 @@ function showAttrIcon(name) {
 </script>
 
 <template>
-  <v-card :class="classList.content">
-    <v-card-text>
+  <v-card :class="classList.content.card">
+    <v-card-text :class="classList.content.text">
       <div>
         <h1 :class="[classList.header(1), classList.global.chapterTitle]">
           <p>{{ properties.title }}</p>

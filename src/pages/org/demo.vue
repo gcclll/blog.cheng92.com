@@ -31,21 +31,7 @@ const [classList] = useClassNames()
 </script>
 
 <template>
-  <div>
-    <v-row v-if="showEditor" no-gutters>
-      <v-col cols="6">
-        <v-card-text class="overflow-hidden">
-          <v-textarea v-model="source" class="org-source" />
-        </v-card-text>
-      </v-col>
-      <v-col cols="6">
-        <v-card-text class="org-content h-[70vh] overflow-scroll">
-          <OrgContentComp :nodes="nodes.children" />
-        </v-card-text>
-      </v-col>
-    </v-row>
-    <OrgContentComp v-else :nodes="nodes.children" />
-  </div>
+  <OrgContentComp :nodes="nodes.children" />
 </template>
 
 <style scoped>

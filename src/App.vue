@@ -34,8 +34,11 @@ const [classList] = useClassNames()
 </script>
 
 <template>
-  <v-app :class="classList.global.background">
-    <v-theme-provider :theme="theme" with-background>
+  <v-app>
+    <v-theme-provider
+      :theme="theme"
+      with-background
+      :class="classList.global.background">
       <RouterView />
     </v-theme-provider>
   </v-app>
