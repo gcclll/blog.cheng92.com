@@ -7,7 +7,7 @@ export default {
       DONE: 'bg-gray-400 text-white rounded px-[5px]',
       CANCELLED: 'bg-[#d0c8c8] text-white rounded px-[5px]',
     }[word]),
-  orgContent: 'org-content bg-gray-100 dark:bg-gray-900 px-3 py-2',
+  orgContent: 'org-content bg-gray-100 dark:bg-gray-600 px-3 py-2',
   tag: ['mr-2', 'pink', { emacs: 'primary', vue: 'green', react: 'blue' }],
   // -> margin, font-family, weight, color, bg-color, underline
   // -> emacs org-special-block-extras
@@ -32,5 +32,13 @@ export default {
   ol: 'list-decimal ml-4',
   ul: 'list-disc ml-4',
   content: 'w-10/12 mx-auto max-w-[800px]',
-  docText: 'underline decoration-dashed text-red underline-offset-4 pr-1'
+  docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
+  // 针对文章全局通用样式
+  global: {
+    // 文章信息，在文章标题下方(如：EMail, Author, Publish, Updated 日期)
+    information:
+      'flex items-center justify-center space-x-4 text-[1rem] text-blue-600',
+    // 文章标题
+    chapterTitle: 'pt-4 pb-8 text-center block',
+  },
 }

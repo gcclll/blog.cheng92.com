@@ -1,4 +1,11 @@
 {
   "defaultThemeName": "light",
-  "extraBackground": "bg-[#fff8ca]"
+  "extraBackground": "bg-[#fff8ca]",
+  "chapterPropertyStyle": "icon",
+  "icons": {
+    "author": "mdi-account-heart",
+    "email": "mdi-email",
+    "published": "mdi-publish",
+    "updated": "mdi-update"
+  }
 }

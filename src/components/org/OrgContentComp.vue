@@ -2,6 +2,7 @@
 // https://github.com/antfu/vitesse/issues/296
 import { components } from './'
 import { OrgNodeTypes } from '~/utils/parser'
+import config from '~/json/config'
 
 const { t } = useI18n()
 const [classList] = useClassNames()
@@ -27,9 +28,18 @@ watch(
   (nodes) => {
     nodeList.value = []
     props.nodes.forEach((node) => {
-      if (node.type === OrgNodeTypes.PROPERTY)
-      properties[node.name.toLowerCase()] = node.value.trim()
-      else nodeList.value.push(node)
+      if (node.type === OrgNodeTypes.PROPERTY) {
+        const name = node.name.toLowerCase()
+        let value = node.value.trim()
+        const dateProps = ['published', 'updated']
+        if (dateProps.includes(name)) {
+          // 只保留年月日
+          value = value.split(' ')?.[0] || ''
+        }
+        properties[name] = value
+      } else {
+        nodeList.value.push(node)
+      }
     })
   },
   {
@@ -46,25 +56,38 @@ const chapterAttrs = computed(() => {
   const required = ['author', 'email', 'published', 'updated']
   const attrs = []
   Object.keys(properties)
-        .filter((p) => required.includes(p))
-        .forEach((name) => {
-          attrs.push({ name, value: properties[name] })
-        })
+    .filter((p) => required.includes(p))
+    .forEach((name) => {
+      attrs.push({ name, value: properties[name] })
+    })
   return attrs
 })
+
+function showAttrIcon(name) {
+  return config.chapterPropertyStyle === 'icon' && config.icons[name]
+}
 </script>
 
 <template>
   <div :class="classList.orgContent">
-    <h1 class="pt-4 pb-8 text-center block" :class="classList.header(1)">
+    <h1 :class="[classList.header(1), classList.global.chapterTitle]">
       <p>{{ properties.title }}</p>
-      <p class="flex items-center justify-center space-x-4 text-[1rem] text-blue-600">
-        <span
-          v-for="(property, i) in chapterAttrs"
-          :key="i"
-          :class="`meta-${property.name}`"
-          >{{ t(`keywords.${property.name}`) }}: {{ property.value }}</span
-        >
+      <p :class="classList.global.information">
+        <template v-for="(property, i) in chapterAttrs" :key="i">
+          <span :class="`meta-${property.name}`">
+            <v-icon v-if="showAttrIcon(property.name)" color="green darken-2">
+              {{ config.icons[property.name] }}
+            </v-icon>
+            <span v-else>{{ t(`keywords.${property.name}`) }}：</span>
+            <a
+              v-if="property.name === 'email'"
+              class="underline align-middle"
+              :href="`mailto:${property.value}`">
+              {{ property.value }}
+            </a>
+            <span v-else class="align-middle">{{ property.value }}</span>
+          </span>
+        </template>
       </p>
     </h1>
     <div v-for="(node, i) in nodeList" :key="i" class="org-content-item">

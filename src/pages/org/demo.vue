@@ -32,7 +32,6 @@ const [classList] = useClassNames()
 
 <template>
   <div>
-    <h3 class="text-center">ORG -> HTML</h3>
     <v-row v-if="showEditor" no-gutters>
       <v-col cols="6">
         <v-card-text class="overflow-hidden">
