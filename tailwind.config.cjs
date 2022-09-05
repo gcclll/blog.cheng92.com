@@ -9,7 +9,7 @@ const fontFamily = {
   humor: ['Humor Sans'],
   diplo: ['Diplomata'],
   monaco: ['Monaco'],
-  bitstm: ['Bitstream Vera Sans Mono']
+  bitstm: ['Bitstream Vera Sans Mono'],
 }
 
 Object.keys(fontFamily).forEach((font) => {
@@ -20,7 +20,11 @@ Object.keys(fontFamily).forEach((font) => {
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx,md}'],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        ise: '375px', // iphone se
+      },
+    },
     fontFamily,
   },
   plugins: [],

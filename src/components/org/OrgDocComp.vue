@@ -14,7 +14,11 @@ const [classList] = useClassNames()
 </script>
 
 <template>
-  <v-tooltip v-model="visible" location="top" activator="parent" >
+  <v-tooltip
+    class="gl-doc__tooltip"
+    v-model="visible"
+    loca-gtion="top"
+    activator="parent">
     <template #activator>
       <span :class="classList.docText" @click.stop="visible = !visible">
         {{ docName }}
@@ -22,7 +26,9 @@ const [classList] = useClassNames()
     </template>
 
     <v-card prepend-icon="mdi-note">
-      <template #title><h3>{{ content }}</h3></template>
+      <template #title>
+        <h3>{{ content }}</h3>
+      </template>
       <v-card-text>
         <AsyncDocComp v-bind="props" />
       </v-card-text>
@@ -30,4 +36,8 @@ const [classList] = useClassNames()
   </v-tooltip>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+ .gl-doc__tooltip :deep(.v-overlay__content) {
+   background: none;
+ }
+</style>
