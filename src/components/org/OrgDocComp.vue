@@ -15,8 +15,8 @@ const [classList] = useClassNames()
 
 <template>
   <v-tooltip
-    class="gl-doc__tooltip"
     v-model="visible"
+    class="gl-doc__tooltip"
     loca-gtion="top"
     activator="parent">
     <template #activator>

@@ -77,14 +77,24 @@ function showAttrIcon(name) {
           <p :class="classList.global.information">
             <template v-for="(property, i) in chapterAttrs" :key="i">
               <span :class="`meta-${property.name}`">
-                <v-icon v-if="showAttrIcon(property.name)" color="green darken-2">
+                <v-icon
+                  v-if="showAttrIcon(property.name)"
+                  color="green darken-2">
                   {{ config.icons[property.name] }}
                 </v-icon>
                 <span v-else>{{ t(`keywords.${property.name}`) }}：</span>
                 <a
                   v-if="property.name === 'email'"
                   class="underline align-middle"
+                  target="_blank"
                   :href="`mailto:${property.value}`">
+                  {{ property.value }}
+                </a>
+                <a
+                  v-else-if="property.name === 'author'"
+                  class="underline align-middle"
+                  target="_blank"
+                  :href="`https://github.com/${property.value}`">
                   {{ property.value }}
                 </a>
                 <span v-else class="align-middle">{{ property.value }}</span>

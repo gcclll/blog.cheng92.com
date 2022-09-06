@@ -38,6 +38,7 @@ onMounted(() => {
   <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn>
   <v-card v-if="isCard"><OrgTextComp :data="data.code" /></v-card>
   <div v-else class="gl-block-node relative">
+    <!-- 语言 - 复制按钮 -->
     <p class="flex flex-row absolute right-0 top-0 z-99 h-8 pt-2">
       <span class="text-pink-600 mr-2">{{data.lang}}</span>
       <span class="mr-2 cursor-pointer text-red-400" @click="copy">copy</span>
