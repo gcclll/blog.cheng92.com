@@ -1,12 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const [classList] = useClassNames()
+</script>
 
 <template>
   <!-- 可以随机背景图 image="https://picsum.photos/1920/1080?random" -->
   <v-app-bar color="primary" density="compact">
     <!-- 背景色 -->
     <template #image>
-      <v-img
-        gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)" />
+      <v-img :gradient="classList.bar.bgBlue" />
     </template>
     <template #prepend>
       <v-app-bar-nav-icon />

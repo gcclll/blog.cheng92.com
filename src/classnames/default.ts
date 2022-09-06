@@ -46,4 +46,9 @@ export default {
     background: '',
     // 'bg-gradient-to-b from-green-300 via-green-100 to-slate-200 dark:from-black dark:via-black dark:to-black',
   },
+  // 导航条
+  bar: {
+    // gradient
+    bgBlue: 'to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)',
+  }
 }
