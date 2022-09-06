@@ -32,7 +32,7 @@ export default {
   ul: 'list-disc ml-4',
   // 内容区
   content: {
-    card: 'w-10/12 mx-auto max-w-[800px]',
+    card: 'fixed w-full top-12 md:w-10/12 md:top-16 md:mx-auto md:max-w-[800px]',
     text: 'bg-gradient-to-b from-slate-300 via-slate-100 to-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-700',
   },
   docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
