@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { type OrgRootNode } from '~/utils/parser'
-import { baseParse } from '~/utils/parser'
 
 const root = ref<OrgRootNode>({})
 
