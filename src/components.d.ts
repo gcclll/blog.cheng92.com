@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
+    OrgBadgeComp: typeof import('./components/org/OrgBadgeComp.vue')['default']
     OrgBlockComp: typeof import('./components/org/OrgBlockComp.vue')['default']
     OrgColorTextComp: typeof import('./components/org/OrgColorTextComp.vue')['default']
     OrgContentComp: typeof import('./components/org/OrgContentComp.vue')['default']

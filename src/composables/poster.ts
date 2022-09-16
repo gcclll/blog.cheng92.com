@@ -5,13 +5,13 @@ import { baseParse as parse, type OrgRootNode } from '~/utils/parser'
 const cachedPosterAST: Record<string, OrgRootNode> = {}
 
 export async function usePoster(filename: string): Promise<OrgRootNode | null> {
-  const { status, data } = await axios.get<string>(`/posts/${filename}.org`)
-
-  if (status !== 200 || !data) return null
-
   const cached = cachedPosterAST[filename]
 
   if (cached) return cached
+
+  const { status, data } = await axios.get<string>(`/posts/${filename}.org`)
+
+  if (status !== 200 || !data) return null
 
   const ast = parse(data)
 

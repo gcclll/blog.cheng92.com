@@ -4,6 +4,11 @@
 #+published: 2022-09-05 09:23:28
 #+updated: 2022-09-05 09:23:58
 
+* Badge
+
+message + message color: <badge:gcclll | green>
+
+
 * Documentations
 
 I'm an doc:test documetation.
@@ -14,6 +19,9 @@ I'm an doc:test documetation.
 |---------+-------|
 | default | since |
 | 222     | 1111  |
+
+
+<badge:xx|yyy|blue>
 
 * Blocks
 

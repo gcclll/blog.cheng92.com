@@ -20,8 +20,10 @@ const props = withDefaults(
   <OrgDocComp
     v-if="data.color === 'doc'"
     :doc-name="data.color"
-    :content="data.content"
-  />
+    :content="data.content" />
+  <OrgBadgeComp
+    v-else-if="data.color === 'badge' && data.badge"
+    :data="data.badge" />
   <span v-else :class="useClassNames('space')">
     <font v-if="data.children?.length === 0" :color="data.color">
       {{ `${data.content.trim()}` }}

@@ -27,13 +27,14 @@ export default {
     '&@': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
     '&%': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
     '&&': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
+    'xx': 'leading-n'
   },
   ol: 'list-decimal ml-4',
   ul: 'list-disc ml-4',
   // 内容区
   content: {
     card: 'fixed w-full top-12 md:w-10/12 md:top-16 md:mx-auto md:max-w-[800px]',
-    text: 'bg-gradient-to-b from-slate-300 via-slate-100 to-slate-200 dark:from-slate-900 dark:via-slate-800 dark:to-slate-700',
+    text: '',// 'bg-gradient-to-b from-slate-300 via-slate-100 to-slate-200',
   },
   docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
   // 针对文章全局通用样式

@@ -3,10 +3,14 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App.vue'
 import type { UserModule } from './types'
 import generatedRoutes from '~pages'
+import { createOrgParsingWorker } from '~/utils/workers'
 
 // import '@unocss/reset/tailwind.css'
 import './styles/index.scss'
 // import 'uno.css'
+
+// 启动所有 .org 文件的解析程序
+createOrgParsingWorker()
 
 const routes = setupLayouts(generatedRoutes)
 
