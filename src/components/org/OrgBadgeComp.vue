@@ -22,7 +22,7 @@ onMounted(() => {
   <span class="inline-block align-middle">
     <!-- 没有 url 时候使用普通的 img 就够了 -->
     <object v-if="data.messageLink || data.labelLink" :data="data.url"></object>
-    <img v-else alt="" :src="data.url" />
+    <img v-else alt="" :src="data.url"/>
   </span>
 </template>
 
