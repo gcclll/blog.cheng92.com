@@ -1,5 +1,9 @@
 <script lang="ts" setup>
 const [classList] = useClassNames()
+
+onUpdated(() => {
+  console.log({ isDark })
+})
 </script>
 
 <template>
@@ -21,7 +25,13 @@ const [classList] = useClassNames()
 
       <!-- 收藏按钮 -->
       <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+        <v-icon color="red">mdi-heart</v-icon>
+      </v-btn>
+      <v-btn v-if="isDark" icon class="dark:hidden" @click="toggleDark()">
+        <v-icon color="yellow">mdi-white-balance-sunny</v-icon>
+      </v-btn>
+      <v-btn v-else icon class="hidden dark:inline" @click="toggleDark()">
+        <v-icon color="blue">mdi-weather-night</v-icon>
       </v-btn>
       <v-btn icon="mdi-dots-vertical" />
     </template>

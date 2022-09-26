@@ -35,7 +35,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn>
+  <!-- <v-btn class="ma-2 pa-2" @click="toggleDark()">改变主题</v-btn> -->
   <v-card v-if="isCard"><OrgTextComp :data="data.code" /></v-card>
   <div v-else class="gl-block-node relative">
     <!-- 语言 - 复制按钮 -->
