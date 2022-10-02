@@ -8,6 +8,37 @@ export default {
       CANCELLED: 'bg-[#d0c8c8] text-white rounded px-[5px]',
     }[word]),
   tag: ['mr-2', 'pink', { emacs: 'primary', vue: 'green', react: 'blue' }],
+  ol: 'list-decimal ml-4',
+  ul: 'list-disc ml-4',
+  // 内容区
+  content: {
+    card: 'fixed w-full top-12 md:w-10/12 md:top-16 md:mx-auto md:max-w-[800px]',
+    text: '', // 'bg-gradient-to-b from-slate-300 via-slate-100 to-slate-200',
+  },
+  docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
+  // 针对文章全局通用样式
+  global: {
+    // 文章信息，在文章标题下方(如：EMail, Author, Publish, Updated 日期)
+    information:
+      'flex flex-col items-start md:flex-row justify-center md:space-x-4 text-[1rem]  text-blue-600',
+    // 文章标题
+    chapterTitle: 'pt-4 pb-8 text-center block',
+    // 博客主体背景色
+    background: '',
+    // 'bg-gradient-to-b from-green-300 via-green-100 to-slate-200 dark:from-black dark:via-black dark:to-black',
+  },
+  // 导航条
+  bar: {
+    // gradient
+    // bgBlue: 'to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)',
+    bgBlue: 'bg-gradient-to-r',
+  },
+  // main color: #AE8B2D
+  timestamp: {
+    wrapper: 'border border-[#AE8B2D] mr-1',
+    time: 'px-1 bg-[#AE8B2D] text-white',
+    date: 'px-1 bg-white text-[#AE8B2D]',
+  },
   // -> margin, font-family, weight, color, bg-color, underline
   // -> emacs org-special-block-extras
   orgExtraTags: {
@@ -27,35 +58,6 @@ export default {
     '&@': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
     '&%': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
     '&&': 'leading-normal mx-1 font-monaco text-[#00ce00] ',
-    'xx': 'leading-n'
+    'xx': 'leading-n',
   },
-  ol: 'list-decimal ml-4',
-  ul: 'list-disc ml-4',
-  // 内容区
-  content: {
-    card: 'fixed w-full top-12 md:w-10/12 md:top-16 md:mx-auto md:max-w-[800px]',
-    text: '',// 'bg-gradient-to-b from-slate-300 via-slate-100 to-slate-200',
-  },
-  docText: 'underline decoration-dashed text-red underline-offset-4 pr-1',
-  // 针对文章全局通用样式
-  global: {
-    // 文章信息，在文章标题下方(如：EMail, Author, Publish, Updated 日期)
-    information: 'flex flex-col items-start md:flex-row justify-center md:space-x-4 text-[1rem]  text-blue-600',
-    // 文章标题
-    chapterTitle: 'pt-4 pb-8 text-center block',
-    // 博客主体背景色
-    background: '',
-    // 'bg-gradient-to-b from-green-300 via-green-100 to-slate-200 dark:from-black dark:via-black dark:to-black',
-  },
-  // 导航条
-  bar: {
-    // gradient
-    bgBlue: 'to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)',
-  },
-  // main color: #AE8B2D
-  timestamp: {
-    wrapper: 'border border-[#AE8B2D] mr-1',
-    time: 'px-1 bg-[#AE8B2D] text-white',
-    date: 'px-1 bg-white text-[#AE8B2D]',
-  }
 }

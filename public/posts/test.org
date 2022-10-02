@@ -4,6 +4,23 @@
 #+published: 2022-09-05 09:23:28
 #+updated: 2022-09-05 09:23:58
 
+* svg-tag-mode
+
+tags: MEETING NOTE DONE TODO
+
+checkbox: [x] [ ]
+
+inactive date: [2022-10-03]
+
+active date: <2022-02-14> , <2022-02-12 10:00>
+
+progress: [1/3] [30%]
+
+
+
+* State Words
+keywords: TODO CANCELLED DONE
+
 * Badge
 
 message + message color: <badge:gcclll | green>
@@ -49,7 +66,7 @@ Emacs Lisp:
 
 #ccc:i #666666:should red:text1 green:text cyan:between yellow:texts.
 
-** CANCELLED Awesome font family
+** Awesome font family
 CLOSED: [2022-09-02 Fri 09:49]
 
 You can self-define any style.
@@ -99,6 +116,13 @@ Order List:
 2. order list item 2
 
 
+list with state:
+
+- [x] checked item
+- [x] checked item
+- [ ] unchecked item 1
+- [ ] unchecked item 2
+
 * textbox
 
 #+begin_textbox
@@ -119,7 +143,7 @@ test box
 
 suptext^{sup} xxxx text subtext_{sub} jjjjkkkj
 
-* TODO header1^{sup}  xx_{sub} :tag1:tag2:emacs:vue:react:
+* header1^{sup}  xx_{sub} :tag1:tag2:emacs:vue:react:
 DEADLINE: <2022-07-06 Wed>
 :PROPERTIES:
 :STYLE: .test{color:red}

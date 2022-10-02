@@ -20,9 +20,9 @@ onMounted(() => {
 const styles = useClassNames('timestamp')
 
 const ts = computed(() => {
-  const { time, date, week = '' } = props.data?.timestamp ?? {}
+  const { time = '', date = '', week = '' } = props.data?.timestamp ?? {}
   return {
-    time: `${week} ${time}`,
+    time: `${week} ${time}`.trim(),
     date,
   }
 })
@@ -31,7 +31,7 @@ const ts = computed(() => {
 <template>
   <!-- color: #AE8B2D -->
   <span :class="styles.wrapper">
-    <span :class="styles.date">{{ ts.date }}</span>
-    <span :class="styles.time">{{ ts.time }}</span>
+    <span v-if="ts.date" :class="styles.date">{{ ts.date }}</span>
+    <span v-if="ts.time" :class="styles.time">{{ ts.time }}</span>
   </span>
 </template>
