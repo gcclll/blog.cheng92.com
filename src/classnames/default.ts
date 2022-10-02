@@ -51,5 +51,11 @@ export default {
   bar: {
     // gradient
     bgBlue: 'to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)',
+  },
+  // main color: #AE8B2D
+  timestamp: {
+    wrapper: 'border border-[#AE8B2D] mr-1',
+    time: 'px-1 bg-[#AE8B2D] text-white',
+    date: 'px-1 bg-white text-[#AE8B2D]',
   }
 }

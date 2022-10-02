@@ -13,16 +13,25 @@ const props = withDefaults(
   },
 )
 
-const date = computed(() => {
-  const {  } = props.data?.timestamp ?? {}
-  return `${year}-${month}-${day}`
-})
 onMounted(() => {
-  console.log(props.data, 'org timestamp')
+  console.log(props.data.timestamp, 'org timestamp')
 })
 
+const styles = useClassNames('timestamp')
+
+const ts = computed(() => {
+  const { time, date, week = '' } = props.data?.timestamp ?? {}
+  return {
+    time: `${week} ${time}`,
+    date,
+  }
+})
 </script>
 
 <template>
-  <span></span>
+  <!-- color: #AE8B2D -->
+  <span :class="styles.wrapper">
+    <span :class="styles.date">{{ ts.date }}</span>
+    <span :class="styles.time">{{ ts.time }}</span>
+  </span>
 </template>
