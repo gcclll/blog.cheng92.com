@@ -200,7 +200,7 @@ when the variable is created>.
 red:红色部分 意思是 var 可以有多个声明语句，但是不管声明几次实际都只会创建一个变量。
 
 blue:蓝色部分 意思是带赋值的 var 语句，并不会在创建它的时候就赋值，而是第一个执
-行的时候才会真正被赋值(这也就是blue:var只会声明提升而不会提升赋值)
+行的时候才会真正被赋值(这也就是 blue:var 只会声明提升而不会提升赋值)
 
 #+begin_box 提升有关知识扩展
 
@@ -262,7 +262,3 @@ Language Specification]] 中 return 语法的定义
 [fn:var] https://tc39.es/ecma262/#sec-variable-statement
 [fn:return] https://tc39.es/ecma262/#prod-ReturnStatement
 
-* COMMENT Local Variables       :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

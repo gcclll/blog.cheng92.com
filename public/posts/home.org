@@ -13,10 +13,10 @@
 [[color:#67c23a][绿色标签，如： vue]] 表示分类，可点击该 blue:标签 可快速新建一个该分类的 doc:Tab
 页，包含该分类下的所有文章。
 
-[[color:#409eff][蓝色标签，如： setup]] 表示文章标签(blue:关键词)，可通过点击它新建一个包含该blue:关键词 的所
+[[color:#409eff][蓝色标签，如： setup]] 表示文章标签(blue:关键词)，可通过点击它新建一个包含该 blue:关键词 的所
 有文章的 doc:tab 页。
 
-<green:如果想了解vue3 中具体哪一个知识点(源码)，可以留言哦，没有的则会抽空及时补上>😘。
+<green:如果想了解 vue3 中具体哪一个知识点(源码)，可以留言哦，没有的则会抽空及时补上>😘。
 
 该站为临时博客站点，正在着手编写 [[https://www.npmjs.com/package/org-file-parser-with-js][org-file-parser-with-js - npm]] 插件，
 将来可以直接 Emacs -> Org Mode -> Org File -> Blog Post，完成之后不再需要借助其
@@ -71,5 +71,3 @@ CLOSED: [2022-04-28 Thu 16:17]
 ** [[id:fc444cea-b33d-401c-b514-7d78cec8f90f][my plans]]
 ** [[id:aa445529-4f0e-48d8-833f-12c149603ca6][Documentations]]
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables: after-save-hook: gcl/org-html-export-to-html End:

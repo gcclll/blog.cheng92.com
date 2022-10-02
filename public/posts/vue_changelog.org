@@ -3263,7 +3263,3 @@ CLOSED: [2021-08-05 Thu 23:44]
 
   #+end_src
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

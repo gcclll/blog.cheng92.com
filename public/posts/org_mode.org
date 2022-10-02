@@ -72,11 +72,6 @@ number foot notes[fn:1]
 
 named foot notes[fn:named]
 
-* COMMENT Local Variables       :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:
-
 * FootNotes
 
 [fn:1] I am a number footnote.

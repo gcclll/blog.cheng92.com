@@ -46,7 +46,3 @@ anyway.
 
 更多说明请翻阅官网 [[https://partytown.builder.io/how-does-partytown-work][How Does Partytown Work - Partytown]]
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

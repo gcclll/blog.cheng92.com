@@ -23,7 +23,3 @@ yellow:黄灯💡：需要注意截止日期。
 <script src="/assets/tests/my-plan.js"></script>
 #+end_export
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

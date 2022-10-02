@@ -14,7 +14,7 @@
 
 vue3 编译器核心模块 -> [[https://github.com/vuejs/core/blob/main/packages/compiler-core/src/index.ts][core/index.ts at main · vuejs/core]]
 
-green:该模块主要实现将SFC文件编译成render函数，其实主要包含三个阶段
+green:该模块主要实现将 SFC 文件编译成 render 函数，其实主要包含三个阶段
 
  1. ast parser 阶段, 将 SFC 中的 ~<template>~ 编译成 AST(抽象语法树)；
  2. transform 阶段，对 ast 的加工处理生成 codegenNode，比如：处理 ~for/if/on/bind~ 等指令；
@@ -9101,7 +9101,7 @@ logg("block + directives", _genCode(
 
     // 生成 codegen
     return generate(ast, extend({}, options, { prefixIdentifiers }))
-  } 
+  }
 #+end_src
 #+end_details
 
@@ -9161,7 +9161,3 @@ function getBaseTransformPreset(prefixIdentifiers) {
 #+end_details
 
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

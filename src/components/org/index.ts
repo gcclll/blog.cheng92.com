@@ -8,6 +8,7 @@ import OrgStateWordComp from './OrgStateWordComp.vue'
 import OrgColorTextComp from './OrgColorTextComp.vue'
 import OrgListComp from './OrgListComp.vue'
 import OrgBadgeComp from './OrgBadgeComp.vue'
+import OrgTimestampComp from './OrgTimestampComp.vue'
 
 import { OrgNodeTypes } from '~/utils/parser'
 
@@ -22,4 +23,5 @@ export const components = () => ({
   [OrgNodeTypes.COLORFUL_TEXT]: OrgColorTextComp,
   [OrgNodeTypes.LIST]: OrgListComp,
   [OrgNodeTypes.BADGE]: OrgBadgeComp,
+  [OrgNodeTypes.TIMESTAMP]: OrgTimestampComp,
 })

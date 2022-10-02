@@ -9,6 +9,10 @@
 message + message color: <badge:gcclll | green>
 
 
+* Timestamp
+
+<2022-02-12 18:00 Wed +1d> test <2033-03-13 22:00> test !!xxx!!
+
 * Documentations
 
 I'm an doc:test documetation.

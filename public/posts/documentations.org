@@ -1664,7 +1664,3 @@ A function that sets the prototype of an object. Returns a boolean that is true
 if the update was successful.
 #+end_documentation
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

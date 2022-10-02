@@ -57,7 +57,3 @@ git config --global --unset https.proxy
 
 生成网站的 scroll to top 按钮: [[https://www.scrolltotop.com/][Free Scroll to Top Buttons]]。
 
-* COMMENT Local Variables       :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

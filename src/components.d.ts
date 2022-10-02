@@ -23,6 +23,7 @@ declare module '@vue/runtime-core' {
     OrgSubSupComp: typeof import('./components/org/OrgSubSupComp.vue')['default']
     OrgTableComp: typeof import('./components/org/OrgTableComp.vue')['default']
     OrgTextComp: typeof import('./components/org/OrgTextComp.vue')['default']
+    OrgTimestampComp: typeof import('./components/org/OrgTimestampComp.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

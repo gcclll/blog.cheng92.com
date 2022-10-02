@@ -3881,8 +3881,3 @@ data-caption="Preview"
 
 [fn:1] https://tc39.es/ecma262/#sec-function-calls
 [fn:2] https://www.cheng92.com/vue/vue-teardown-2-sheduler/
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:
-

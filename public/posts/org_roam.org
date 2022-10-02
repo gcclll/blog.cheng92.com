@@ -25,7 +25,3 @@ label:193fb17e-b4ea-4b4b-bc78-056815359664
 | 2 | 2 |
 | 3 | 3 |
 
-* COMMENT Local Variables       :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

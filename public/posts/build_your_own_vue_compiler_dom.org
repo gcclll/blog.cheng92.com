@@ -689,7 +689,7 @@ compiler-dom 对 v-on 指令的处理就是对修饰符的处理，将事件函�
 
 修饰符有三类：
 
-1. 事件选项kbd:passive,once,capture
+1. 事件选项 kbd:passive,once,capture
 
    [[https://segmentfault.com/a/1190000017247263][passive的作用和原理 - SegmentFault 思否]]
 
@@ -1203,7 +1203,3 @@ function parse(template, options = {}) {
 <script src="/assets/js/vue-json-viewer/index.js"></script>
 <script src="/assets/tests/h1Mvr33k.js"></script>
 #+end_export
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

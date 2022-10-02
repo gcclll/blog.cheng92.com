@@ -156,7 +156,3 @@ walk(ast, {
 #+end_src
 
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

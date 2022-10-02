@@ -1419,7 +1419,3 @@ load().then(() => {
 2. post cbs 针对各种周期函数(组件，指令，VNode)
 3. job 针对 instance.update 组件更新函数的调用
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

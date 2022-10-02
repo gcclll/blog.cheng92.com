@@ -57,7 +57,3 @@ fatal: No url found for submodule path 'site-lisp/extensions/company-mode' in .g
 
 -> [[$HOME/.gclrc/bin/fix-brew-permission-denied-apply2files]]
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:

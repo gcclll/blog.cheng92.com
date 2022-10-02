@@ -18,7 +18,7 @@
 
 [[https://www.cheng92.com/vue/vue-mind-map-runtime-core-2-render/][Vue3 源码头脑风暴之 7 ☞ runtime-core(2) - render - 若叶知秋]]
 
-red:测试代码涉及到非runtime-core的会直接使用 [[https://github.com/vuejs/core/tree/main/packages][core/packages at main · vuejs/core]] red:现成的代码去测试
+red:测试代码涉及到非 runtime-core 的会直接使用 [[https://github.com/vuejs/core/tree/main/packages][core/packages at main · vuejs/core]] red:现成的代码去测试
 
 [[https://github.com/vuejs/core/tree/main/packages/runtime-core][core/packages/runtime-core at main · vuejs/core]]  应该说是最核心的一个模块了，以
 h 函数为入口涵盖了组件完整生命周期的处理，从 vnode -> dom, mount -> update ->
@@ -75,7 +75,7 @@ const ShapeFlags = {
 
 * 简介
 
-green:runtime-core的核心入口函数即h也就是createVNode函数，所以会以这个为切入点。
+green:runtime-core 的核心入口函数即 h 也就是 createVNode 函数，所以会以这个为切入点。
 
 #+begin_export html
 <a href="../assets/img/vue3/runtime-core/vue-runtime-core.svg"
@@ -598,7 +598,3 @@ const normalizeRef = ({ ref, ref_key, ref_for }) => {
 #+end_src
 * watch
 
-* COMMENT Local Variables :ARCHIVE:
-# Local Variables:
-# after-save-hook: gcl/org-html-export-to-html
-# End:
